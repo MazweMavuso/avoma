@@ -3,6 +3,7 @@ import Navbar from './components/layout/Navbar';
 import HomePage from './pages/home/HomePage';
 import ProductsPage from './pages/products/ProductsPage';
 import AboutPage from './pages/about/AboutPage';
+import ContactPage from './pages/contact/ContactPage';
 import ScrollReset from './components/layout/ScrollReset';
 import Footer from './components/layout/Footer';
 import ScrollToTop from './components/shared/ScrollToTop';
@@ -21,6 +22,7 @@ const App = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </main>
         <Footer />

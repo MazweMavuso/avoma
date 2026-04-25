@@ -1,6 +1,7 @@
 import AboutHero from './components/AboutHero';
 import MissionVision from './components/MissionVision';
 import CompanyHistory from './components/CompanyHistory';
+import FAQ from './components/FAQ';
 import Partners from '../../components/shared/Partners';
 
 const AboutPage = () => {
@@ -10,6 +11,7 @@ const AboutPage = () => {
         <AboutHero />
         <MissionVision />
         <CompanyHistory />
+        <FAQ />
         <div className="mt-20">
           <Partners />
         </div>
