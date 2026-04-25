@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import backgroundImage from '../../../assets/images/backgroundimage.png';
 import backgroundImage2 from '../../../assets/images/backgroundimag2.png';
 import { Reveal } from '../../../components/shared/animations/Reveal';
@@ -13,7 +14,9 @@ const slides = [
     title: "Quality Care Through Excellence",
     description: "Avoma Pharma is dedicated to providing high-quality healthcare products and innovative medical solutions across Eswatini and beyond.",
     primaryBtn: "Our Products",
-    secondaryBtn: "Learn More"
+    primaryLink: "/products",
+    secondaryBtn: "Learn More",
+    secondaryLink: "/about"
   },
   {
     image: backgroundImage2,
@@ -21,7 +24,9 @@ const slides = [
     title: "Precision in Every Diagnosis",
     description: "Equipping healthcare providers with state-of-the-art diagnostic tools and laboratory equipment for accurate and faster medical results.",
     primaryBtn: "View Equipment",
-    secondaryBtn: "Contact Us"
+    primaryLink: "/products",
+    secondaryBtn: "Contact Us",
+    secondaryLink: "/contact"
   }
 ];
 
@@ -126,23 +131,27 @@ const Hero = () => {
               </motion.p>
               
               <motion.div variants={itemVariants} className="mt-12 flex flex-col sm:flex-row gap-5">
-                <motion.button 
-                  whileHover={{ scale: 1.05, backgroundColor: '#ea580c' }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center justify-center px-10 py-4.5 bg-orange-600 text-white font-black rounded-2xl shadow-2xl shadow-orange-200 dark:shadow-none transition-all text-lg group"
-                >
-                  {slides[currentSlide].primaryBtn}
-                  <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" size={22} />
-                </motion.button>
+                <Link to={slides[currentSlide].primaryLink}>
+                  <motion.button 
+                    whileHover={{ scale: 1.05, backgroundColor: '#ea580c' }}
+                    whileTap={{ scale: 0.95 }}
+                    className="w-full sm:w-auto flex items-center justify-center px-10 py-4.5 bg-orange-600 text-white font-black rounded-2xl shadow-2xl shadow-orange-200 dark:shadow-none transition-all text-lg group"
+                  >
+                    {slides[currentSlide].primaryBtn}
+                    <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" size={22} />
+                  </motion.button>
+                </Link>
                 
-                <motion.button 
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex items-center justify-center px-10 py-4.5 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-bold rounded-2xl border-2 border-gray-100 dark:border-gray-700 hover:border-orange-600 hover:text-orange-600 transition-all text-lg group"
-                >
-                  {slides[currentSlide].secondaryBtn}
-                  <ArrowRight className="ml-2 text-gray-400 group-hover:text-orange-600 transition-colors" size={22} />
-                </motion.button>
+                <Link to={slides[currentSlide].secondaryLink}>
+                  <motion.button 
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="w-full sm:w-auto flex items-center justify-center px-10 py-4.5 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-bold rounded-2xl border-2 border-gray-100 dark:border-gray-700 hover:border-orange-600 hover:text-orange-600 transition-all text-lg group"
+                  >
+                    {slides[currentSlide].secondaryBtn}
+                    <ArrowRight className="ml-2 text-gray-400 group-hover:text-orange-600 transition-colors" size={22} />
+                  </motion.button>
+                </Link>
               </motion.div>
             </motion.div>
           </AnimatePresence>
