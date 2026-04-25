@@ -1,5 +1,6 @@
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -7,7 +8,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           <div>
-            <img src="/avoma-pharma-logo.png" alt="Logo" className="h-10 mb-6 brightness-0 invert" />
+            <img src="/avoma-pharma-logo.png" alt="Logo" className="h-10 mb-6" />
             <p className="text-gray-400">
               Leading the way in pharmaceutical excellence and innovative healthcare solutions across East Africa and beyond.
             </p>
@@ -15,11 +16,10 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-bold mb-6 uppercase tracking-widest">Quick Links</h4>
             <ul className="space-y-4 text-gray-400">
-              <li><a href="#" className="hover:text-orange-500 transition-colors font-medium">Home</a></li>
-              <li><a href="#about" className="hover:text-orange-500 transition-colors font-medium">About Us</a></li>
-              <li><a href="#focus" className="hover:text-orange-500 transition-colors font-medium">Focus Areas</a></li>
-              <li><a href="#partners" className="hover:text-orange-500 transition-colors font-medium">Partners</a></li>
-              <li><a href="#contact" className="hover:text-orange-500 transition-colors font-medium">Contact</a></li>
+              <li><Link to="/" className="hover:text-orange-500 transition-colors font-medium">Home</Link></li>
+              <li><Link to="/products" className="hover:text-orange-500 transition-colors font-medium">Products</Link></li>
+              <li><Link to="/about" className="hover:text-orange-500 transition-colors font-medium">About Us</Link></li>
+              <li><a href="/#contact" className="hover:text-orange-500 transition-colors font-medium">Contact</a></li>
             </ul>
           </div>
           <div>
