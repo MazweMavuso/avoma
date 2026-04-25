@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
+import { businessInfo } from '../../../data/businessInfo';
 
 const About = () => {
   return (
@@ -15,7 +16,7 @@ const About = () => {
               />
               <div className="absolute -bottom-6 -right-6 bg-orange-600 p-8 rounded-3xl shadow-xl hidden sm:block">
                 <p className="text-white font-black text-2xl">Established</p>
-                <p className="text-orange-100 font-bold uppercase tracking-widest text-sm">Since 2010</p>
+                <p className="text-orange-100 font-bold uppercase tracking-widest text-sm">Since {businessInfo.established.group}</p>
               </div>
             </div>
           </div>

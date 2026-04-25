@@ -9,7 +9,10 @@ const AboutHero = () => {
       transition={{ duration: 0.6 }}
       className="text-center mb-24"
     >
-      <span className="text-orange-600 font-bold uppercase tracking-widest text-sm">Our Identity</span>
+      <div className="flex flex-col items-center justify-center space-y-4 mb-4">
+        <span className="text-orange-600 font-bold uppercase tracking-widest text-sm px-4 py-1.5 bg-orange-50 dark:bg-orange-900/20 rounded-full">Our Identity</span>
+        <span className="text-gray-500 dark:text-gray-400 font-bold uppercase tracking-tighter text-xs">Established since {businessInfo.established.pharma}</span>
+      </div>
       <h1 className="mt-4 text-5xl lg:text-7xl font-black text-gray-900 dark:text-white tracking-tight">
         Excellence in <span className="text-orange-600">Healthcare</span>
       </h1>
