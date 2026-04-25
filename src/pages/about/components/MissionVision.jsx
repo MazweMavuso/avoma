@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Target, Eye, ShieldCheck } from 'lucide-react';
+import { businessInfo } from '../../../data/businessInfo';
 
 const MissionVision = () => {
   const fadeInUp = {
@@ -24,7 +25,7 @@ const MissionVision = () => {
             </div>
             <h2 className="text-3xl font-black text-gray-900 dark:text-white mb-6 tracking-tight">Our Mission</h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 font-medium leading-relaxed">
-              To provide high-quality healthcare products and innovative medical solutions, ensuring accessible healthcare for all across Southern Africa by maintaining the highest standards of pharmaceutical distribution.
+              To provide high-quality healthcare products and innovative medical solutions, ensuring accessible healthcare for all across {businessInfo.countries.join(' and ')} by maintaining the highest standards of pharmaceutical distribution.
             </p>
           </div>
           <div className="absolute top-0 right-0 -mt-8 -mr-8 w-40 h-40 bg-orange-600/5 rounded-full blur-3xl group-hover:bg-orange-600/10 transition-colors"></div>
@@ -62,7 +63,7 @@ const MissionVision = () => {
           <ShieldCheck size={24} />
         </div>
         <p className="text-gray-700 dark:text-gray-300 font-bold text-center md:text-left">
-          Every product we distribute adheres to the highest global standards, reflecting our dedication to quality assurance and patient safety.
+          Every product we distribute adheres to the highest global standards, reflecting our dedication to quality assurance and patient safety at {businessInfo.name}.
         </p>
       </motion.div>
     </section>

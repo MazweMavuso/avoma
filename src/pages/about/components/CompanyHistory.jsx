@@ -1,18 +1,19 @@
 import { motion } from 'framer-motion';
 import { Calendar, Award, Building, Users } from 'lucide-react';
+import { businessInfo } from '../../../data/businessInfo';
 
 const CompanyHistory = () => {
   const milestones = [
     {
-      year: '2017',
+      year: businessInfo.established.group.toString(),
       title: 'Foundations',
-      desc: 'Avoma Life and Avoma Strategy commenced trading, establishing the group\'s initial presence in healthcare and strategic consulting.',
+      desc: `Avoma Life and Avoma Strategy commenced trading, establishing the group's initial presence in healthcare and strategic consulting.`,
       icon: <Building size={24} />,
     },
     {
-      year: '2019',
+      year: businessInfo.established.pharma.toString(),
       title: 'Pharma Division Established',
-      desc: 'In September 2019, AVOMA Pharma was launched to focus specifically on pharmaceutical wholesale, distribution, and surgical equipment.',
+      desc: `In September ${businessInfo.established.pharma}, ${businessInfo.name} was launched to focus specifically on pharmaceutical wholesale, distribution, and surgical equipment.`,
       icon: <Award size={24} />,
     },
     {

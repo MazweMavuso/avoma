@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { businessInfo } from '../../../data/businessInfo';
 
 const AboutHero = () => {
   return (
@@ -13,7 +14,7 @@ const AboutHero = () => {
         Excellence in <span className="text-orange-600">Healthcare</span>
       </h1>
       <p className="mt-6 text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto font-medium leading-relaxed">
-        AVOMA Pharma is more than a distributor. We are a dedicated partner in the healthcare ecosystem, committed to bridging the gap between medical innovation and patient care.
+        {businessInfo.name} is more than a distributor. We are a dedicated partner in the healthcare ecosystem, committed to bridging the gap between medical innovation and patient care.
       </p>
     </motion.div>
   );

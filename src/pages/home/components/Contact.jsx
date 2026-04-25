@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
 import React from 'react';
+import { businessInfo } from '../../../data/businessInfo';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -14,7 +15,7 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
-    alert('Thank you for contacting Avoma Pharma. We will get back to you soon!');
+    alert(`Thank you for contacting ${businessInfo.name}. We will get back to you soon!`);
     setFormData({ name: '', email: '', subject: '', message: '' });
   };
 
@@ -26,26 +27,26 @@ const Contact = () => {
     {
       icon: <Phone className="text-orange-600" size={24} />,
       title: 'Phone',
-      info: '+268 2422 0013 / 14',
-      subInfo: '+268 2422 0034'
+      info: businessInfo.contact.phones[0],
+      subInfo: businessInfo.contact.phones[2]
     },
     {
       icon: <Mail className="text-orange-600" size={24} />,
       title: 'Email',
-      info: 'info@avomapharma.com',
+      info: businessInfo.contact.emails[0],
       subInfo: 'Online support 24/7'
     },
     {
       icon: <MapPin className="text-orange-600" size={24} />,
       title: 'Office',
-      info: 'Plot 943, Mshini Rd, Sidwashini',
-      subInfo: 'Mbabane, H100, Eswatini'
+      info: businessInfo.contact.address.street + ', ' + businessInfo.contact.address.area,
+      subInfo: businessInfo.contact.address.city + ', ' + businessInfo.contact.address.country
     },
     {
       icon: <Clock className="text-orange-600" size={24} />,
       title: 'Working Hours',
-      info: '08:00 AM - 04:00 PM',
-      subInfo: 'Sat - Sun: Closed'
+      info: businessInfo.contact.workingHours,
+      subInfo: `Sat - Sun: ${businessInfo.contact.weekend}`
     }
   ];
 
