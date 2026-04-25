@@ -102,7 +102,7 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/40 to-transparent lg:from-white lg:via-white/95 lg:to-white/10 dark:from-gray-950/90 dark:via-gray-950/40 dark:to-transparent lg:dark:from-gray-950 lg:dark:via-gray-950/95 lg:dark:to-transparent z-10"></div>
       </div>
 
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-44 pb-10">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-32 sm:pt-44 pb-10">
         <div className="lg:max-w-2xl">
           <AnimatePresence mode="wait">
             <motion.div
@@ -112,18 +112,18 @@ const Hero = () => {
               animate="visible"
               exit="exit"
             >
-              <motion.h1 variants={itemVariants} className="text-3xl sm:text-4xl lg:text-6xl tracking-tight font-black text-gray-900 dark:text-white leading-[1.1] uppercase">
+              <motion.h1 variants={itemVariants} className="text-3xl sm:text-4xl lg:text-6xl tracking-tight font-black text-gray-900 dark:text-white leading-none sm:leading-[1.1] uppercase">
                 {slides[currentSlide].title.split(' ').slice(0, -1).join(' ')} <br />
                 <span className="text-orange-600">
                   {slides[currentSlide].title.split(' ').pop()}
                 </span>
               </motion.h1>
               
-              <motion.p variants={itemVariants} className="mt-4 text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl font-medium line-clamp-3">
+              <motion.p variants={itemVariants} className="mt-3 sm:mt-4 text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl font-medium line-clamp-3">
                 {slides[currentSlide].description}
               </motion.p>
               
-              <motion.div variants={itemVariants} className="mt-8 flex flex-col sm:flex-row gap-4">
+              <motion.div variants={itemVariants} className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-4">
                 <Link to={slides[currentSlide].primaryLink} className="w-full sm:w-auto">
                   <motion.button 
                     whileHover={{ scale: 1.05, backgroundColor: '#ea580c' }}
@@ -146,7 +146,7 @@ const Hero = () => {
                 </Link>
               </motion.div>
 
-              <motion.div variants={itemVariants} className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-orange-50 dark:bg-orange-950/20 border border-orange-100 dark:border-orange-900/30 mt-8">
+              <motion.div variants={itemVariants} className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-orange-50 dark:bg-orange-950/20 border border-orange-100 dark:border-orange-900/30 mt-6 sm:mt-8">
                 <span className="flex h-1.5 w-1.5 rounded-full bg-orange-600 animate-pulse"></span>
                 <span className="text-orange-700 dark:text-orange-400 text-[10px] font-black tracking-widest uppercase">{slides[currentSlide].subtitle}</span>
               </motion.div>
