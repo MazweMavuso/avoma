@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X, Send, Bot, User, Minimize2 } from 'lucide-react';
+import { MessageCircle, X, Send, Bot, Minimize2 } from 'lucide-react';
 
 // System Prompt for Avoma Pharma
 const SYSTEM_PROMPT = `STRICT FORMATTING RULES (MANDATORY):
@@ -48,6 +48,7 @@ const Chatbot = () => {
   ]);
   const [isTyping, setIsTyping] = useState(false);
   const scrollRef = useRef(null);
+  const idRef = useRef(2);
 
   // Responsive state
   const [isMobile, setIsMobile] = useState(false);
@@ -77,7 +78,8 @@ const Chatbot = () => {
     const input = customQuery || message;
     if (!input.trim()) return;
 
-    const userMessage = { id: Date.now(), text: input, sender: 'user' };
+    const userMessageId = idRef.current++;
+    const userMessage = { id: userMessageId, text: input, sender: 'user' };
     setMessages(prev => [...prev, userMessage]);
     if (!customQuery) setMessage('');
     setIsTyping(true);
@@ -121,8 +123,9 @@ const Chatbot = () => {
         throw new Error(data.error?.message || 'API request failed');
       }
 
+      const botMessageId = idRef.current++;
       const botResponse = { 
-        id: Date.now() + 1, 
+        id: botMessageId, 
         text: data.choices[0].message.content, 
         sender: 'bot' 
       };
@@ -138,8 +141,9 @@ const Chatbot = () => {
         errorMessage = "I couldn't reach the AI service. Please check your OpenRouter credits or API key validity.";
       }
 
+      const errorId = idRef.current++;
       setMessages(prev => [...prev, {
-        id: Date.now() + 1,
+        id: errorId,
         text: errorMessage,
         sender: 'bot'
       }]);
