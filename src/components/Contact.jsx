@@ -1,21 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import L from 'leaflet';
-
-// Fix for default marker icons in Leaflet with Vite/Webpack
-import markerIcon from 'leaflet/dist/images/marker-icon.png';
-import markerShadow from 'leaflet/dist/images/marker-shadow.png';
-
-let DefaultIcon = L.icon({
-    iconUrl: markerIcon,
-    shadowUrl: markerShadow,
-    iconSize: [25, 41],
-    iconAnchor: [12, 41]
-});
-
-L.Marker.prototype.options.icon = DefaultIcon;
+import React from 'react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -24,13 +10,6 @@ const Contact = () => {
     subject: '',
     message: ''
   });
-
-  const position = [-26.29487, 31.08770];
-  const nearbyPlaces = [
-    { name: 'Avoma Pharma', pos: [-26.29487, 31.08770], type: 'Office' },
-    { name: 'Sidwashini Industrial Area', pos: [-26.2955, 31.0850], type: 'Industrial' },
-    { name: 'Mbabane Bypass Road', pos: [-26.2930, 31.0890], type: 'Landmark' }
-  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -183,7 +162,7 @@ const Contact = () => {
               ))}
             </motion.div>
 
-            {/* Map Container - Flex grow to fill space */}
+            {/* Map Container - Google Maps Iframe */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -192,22 +171,17 @@ const Contact = () => {
               className="flex-grow rounded-[40px] overflow-hidden border border-gray-100 dark:border-gray-800 min-h-[350px] shadow-sm relative group z-0"
             >
               <div className="absolute inset-0 bg-gray-950/5 pointer-events-none group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-              <MapContainer center={position} zoom={15} scrollWheelZoom={false} style={{ height: '100%', width: '100%' }}>
-                <TileLayer
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                {nearbyPlaces.map((place, idx) => (
-                  <Marker key={idx} position={place.pos}>
-                    <Popup>
-                      <div className="font-sans">
-                        <p className="font-black text-orange-600 uppercase text-[10px] tracking-widest">{place.type}</p>
-                        <p className="font-bold text-gray-900">{place.name}</p>
-                      </div>
-                    </Popup>
-                  </Marker>
-                ))}
-              </MapContainer>
+              <iframe
+                title="Avoma Pharma Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3587.896740645607!2d31.085509075402094!3d-26.294866767857245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ee8d348a2786357%3A0x67398188188181!2sAvoma%20Pharma!5e0!3m2!1sen!2szw!4v1714041600000!5m2!1sen!2szw"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="grayscale hover:grayscale-0 transition-all duration-700"
+              ></iframe>
             </motion.div>
           </div>
         </div>
