@@ -35,6 +35,45 @@ const Hero = () => {
     return () => clearInterval(timer);
   }, []);
 
+  const contentVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.3,
+      }
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        staggerChildren: 0.05,
+        staggerDirection: -1,
+        when: "beforeChildren",
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { 
+        duration: 0.8, 
+        ease: [0.25, 1, 0.5, 1] 
+      } 
+    },
+    exit: { 
+      opacity: 0, 
+      y: -20,
+      transition: { 
+        duration: 0.4,
+        ease: "easeIn"
+      } 
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background Image Carousel - Now absolute and full height */}
@@ -42,17 +81,17 @@ const Hero = () => {
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.2, ease: "easeInOut" }}
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1.05 }}
+            exit={{ opacity: 0, scale: 1 }}
+            transition={{ duration: 1.5, ease: [0.4, 0, 0.2, 1] }}
             className="absolute inset-0 h-full w-full"
           >
             <Parallax offset={100}>
               <img 
                 src={slides[currentSlide].image} 
                 alt="Healthcare Background" 
-                className="w-full h-screen object-cover object-center lg:object-center scale-110"
+                className="w-full h-screen object-cover object-center lg:object-center"
               />
             </Parallax>
           </motion.div>
@@ -65,28 +104,28 @@ const Hero = () => {
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
+              variants={contentVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
             >
-              <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-orange-50 dark:bg-orange-950/20 border border-orange-100 dark:border-orange-900/30 mb-8">
+              <motion.div variants={itemVariants} className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-orange-50 dark:bg-orange-950/20 border border-orange-100 dark:border-orange-900/30 mb-8">
                 <span className="flex h-2 w-2 rounded-full bg-orange-600 animate-pulse"></span>
                 <span className="text-orange-700 dark:text-orange-400 text-sm font-bold tracking-wide uppercase">{slides[currentSlide].subtitle}</span>
-              </div>
+              </motion.div>
               
-              <h1 className="text-5xl lg:text-7xl tracking-tight font-black text-gray-900 dark:text-white leading-[1.1]">
+              <motion.h1 variants={itemVariants} className="text-5xl lg:text-7xl tracking-tight font-black text-gray-900 dark:text-white leading-[1.1]">
                 {slides[currentSlide].title.split(' ').slice(0, -1).join(' ')} <br />
                 <span className="text-orange-600 underline decoration-blue-600/30">
                   {slides[currentSlide].title.split(' ').pop()}
                 </span>
-              </h1>
+              </motion.h1>
               
-              <p className="mt-8 text-xl text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl font-medium">
+              <motion.p variants={itemVariants} className="mt-8 text-xl text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl font-medium">
                 {slides[currentSlide].description}
-              </p>
+              </motion.p>
               
-              <div className="mt-12 flex flex-col sm:flex-row gap-5">
+              <motion.div variants={itemVariants} className="mt-12 flex flex-col sm:flex-row gap-5">
                 <motion.button 
                   whileHover={{ scale: 1.05, backgroundColor: '#ea580c' }}
                   whileTap={{ scale: 0.95 }}
@@ -104,7 +143,7 @@ const Hero = () => {
                   {slides[currentSlide].secondaryBtn}
                   <ArrowRight className="ml-2 text-gray-400 group-hover:text-orange-600 transition-colors" size={22} />
                 </motion.button>
-              </div>
+              </motion.div>
             </motion.div>
           </AnimatePresence>
 
