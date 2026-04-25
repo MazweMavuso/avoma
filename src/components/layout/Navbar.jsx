@@ -78,23 +78,26 @@ const Navbar = () => {
           }`}
         >
           <div className="flex justify-between h-20 items-center px-6 sm:px-10">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.8, duration: 0.5 }}
-              className="flex-shrink-0 flex items-center"
-            >
-              <Link to="/">
-                <img 
-                  className="h-12 w-auto hover:scale-105 transition-transform duration-300" 
-                  src="/avoma-pharma-logo.png" 
-                  alt="Avoma Pharma Logo" 
-                />
-              </Link>
-            </motion.div>
+            {/* Logo Container */}
+            <div className="flex-1 flex justify-start items-center">
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.8, duration: 0.5 }}
+                className="flex items-center"
+              >
+                <Link to="/">
+                  <img 
+                    className="h-12 w-auto hover:scale-105 transition-transform duration-300" 
+                    src="/avoma-pharma-logo.png" 
+                    alt="Avoma Pharma Logo" 
+                  />
+                </Link>
+              </motion.div>
+            </div>
             
-            {/* Desktop Menu */}
-            <div className="hidden lg:flex items-center space-x-12">
+            {/* Desktop Nav Links - Centered */}
+            <div className="hidden lg:flex flex-1 justify-center items-center">
               <motion.div 
                 initial="hidden"
                 animate="visible"
@@ -140,12 +143,15 @@ const Navbar = () => {
                   </motion.div>
                 ))}
               </motion.div>
-              
+            </div>
+
+            {/* Actions Container - Right aligned */}
+            <div className="flex-1 flex justify-end items-center space-x-6">
               <motion.div 
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1.6, duration: 0.5 }}
-                className="flex items-center space-x-6"
+                className="hidden lg:flex items-center space-x-6"
               >
                 <button
                   onClick={toggleDarkMode}
@@ -163,28 +169,28 @@ const Navbar = () => {
                   Sign Up
                 </motion.button>
               </motion.div>
-            </div>
 
-            {/* Mobile menu trigger */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.8 }}
-              className="lg:hidden flex items-center space-x-2"
-            >
-              <button
-                onClick={toggleDarkMode}
-                className="p-2.5 rounded-xl text-gray-800 dark:text-gray-200"
+              {/* Mobile menu trigger */}
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.8 }}
+                className="lg:hidden flex items-center space-x-2"
               >
-                {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
-              </button>
-              <button
-                onClick={() => setIsOpen(true)}
-                className="p-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
-              >
-                <Menu size={24} />
-              </button>
-            </motion.div>
+                <button
+                  onClick={toggleDarkMode}
+                  className="p-2.5 rounded-xl text-gray-800 dark:text-gray-200"
+                >
+                  {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+                </button>
+                <button
+                  onClick={() => setIsOpen(true)}
+                  className="p-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                >
+                  <Menu size={24} />
+                </button>
+              </motion.div>
+            </div>
           </div>
         </div>
       </motion.nav>
