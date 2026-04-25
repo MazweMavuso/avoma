@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sun, Moon, ArrowRight } from 'lucide-react';
+import { Menu, X, Sun, Moon, ArrowRight, Globe, Phone } from 'lucide-react';
 import { FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
+import { businessInfo } from '../../data/businessInfo';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -62,12 +63,34 @@ const Navbar = () => {
 
   return (
     <>
+      {/* Top Bar - Desktop Only */}
+      <div className="hidden lg:block fixed top-0 w-full z-[60] bg-gray-950 text-white py-2 px-8 border-b border-white/5">
+        <div className="max-w-7xl mx-auto flex justify-between items-center text-[10px] font-black uppercase tracking-[0.2em]">
+          <div className="flex items-center space-x-8">
+            <div className="flex items-center space-x-2">
+              <Globe size={12} className="text-orange-600" />
+              <span className="opacity-80">Serving: {businessInfo.countries.join(' & ')}</span>
+            </div>
+          </div>
+          <div className="flex items-center space-x-8">
+            <div className="flex items-center space-x-2 border-r border-white/10 pr-8">
+              <span className="text-orange-500">SZ:</span>
+              <a href={`tel:${businessInfo.regionalContacts.eswatini[0]}`} className="hover:text-orange-500 transition-colors">{businessInfo.regionalContacts.eswatini[0]}</a>
+            </div>
+            <div className="flex items-center space-x-2">
+              <span className="text-orange-500">MZ:</span>
+              <a href={`tel:${businessInfo.regionalContacts.mozambique[0]}`} className="hover:text-orange-500 transition-colors">{businessInfo.regionalContacts.mozambique[0]}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <motion.nav 
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed w-full z-50 transition-all duration-500 px-4 sm:px-8 py-4 ${
-          scrolled ? 'top-2' : 'top-0'
+          scrolled ? 'top-10 lg:top-8' : 'top-0 lg:top-6'
         }`}
       >
         <div 

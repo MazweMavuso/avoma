@@ -1,4 +1,4 @@
-export const businessInfo = {
+ export const businessInfo = {
   name: "AVOMA Pharma",
   division: "Pharmaceutical Wholesale & Distribution",
   group: "AVOMA Group",
@@ -29,8 +29,8 @@ export const businessInfo = {
   },
   countries: ["Eswatini", "Mozambique"],
   regionalContacts: {
-    eswatini: "+268 2422 1804",
-    mozambique: "+258 2141 8083"
+    eswatini: ["+268 2422 0014", "+268 2422 0013","+268 2422 0034"],
+    mozambique: ["+258 2141 8083"]
   },
   stats: [
     { label: "Years in Operation", value: "6+" },

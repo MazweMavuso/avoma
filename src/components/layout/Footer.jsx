@@ -26,11 +26,21 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-bold mb-6 uppercase tracking-widest">Contact Info</h4>
             <ul className="space-y-4 text-gray-400">
-              <li className="flex items-start"><Phone size={18} className="mr-3 text-orange-500 mt-1 flex-shrink-0" /> 
-                <span>{businessInfo.contact.phones[0]} / {businessInfo.contact.phones[1].split(' ').pop()}</span>
+              <li className="flex items-start">
+                <Phone size={18} className="mr-3 text-orange-500 mt-1 flex-shrink-0" /> 
+                <div className="flex flex-col">
+                  <span>{businessInfo.contact.phones[0]}</span>
+                  <span className="text-sm opacity-70">{businessInfo.contact.phones[1]} / {businessInfo.contact.phones[2]}</span>
+                </div>
               </li>
-              <li className="flex items-center"><Mail size={18} className="mr-3 text-orange-500" /> {businessInfo.contact.emails[0]}</li>
-              <li className="flex items-start"><MapPin size={18} className="mr-3 text-orange-500 mt-1 flex-shrink-0" /> {businessInfo.contact.address.full}</li>
+              <li className="flex items-center">
+                <Mail size={18} className="mr-3 text-orange-500" /> 
+                {businessInfo.contact.emails[0]}
+              </li>
+              <li className="flex items-start">
+                <MapPin size={18} className="mr-3 text-orange-500 mt-1 flex-shrink-0" /> 
+                {businessInfo.contact.address.full}
+              </li>
             </ul>
           </div>
           <div>

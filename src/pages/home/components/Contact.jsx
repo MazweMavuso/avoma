@@ -26,27 +26,27 @@ const Contact = () => {
   const contactDetails = [
     {
       icon: <Phone className="text-orange-600" size={24} />,
-      title: 'Phone',
-      info: businessInfo.contact.phones[0],
-      subInfo: businessInfo.contact.phones[2]
+      title: 'Regional Contacts',
+      info: `SZ: ${businessInfo.regionalContacts.eswatini[0]}`,
+      subInfo: `MZ: ${businessInfo.regionalContacts.mozambique[0]}`
     },
     {
       icon: <Mail className="text-orange-600" size={24} />,
-      title: 'Email',
+      title: 'Email Support',
       info: businessInfo.contact.emails[0],
-      subInfo: 'Online support 24/7'
+      subInfo: businessInfo.contact.emails[1]
     },
     {
       icon: <MapPin className="text-orange-600" size={24} />,
-      title: 'Office',
-      info: businessInfo.contact.address.street + ', ' + businessInfo.contact.address.area,
-      subInfo: businessInfo.contact.address.city + ', ' + businessInfo.contact.address.country
+      title: 'Main Office',
+      info: `${businessInfo.contact.address.street}, ${businessInfo.contact.address.city}`,
+      subInfo: businessInfo.contact.address.full
     },
     {
       icon: <Clock className="text-orange-600" size={24} />,
-      title: 'Working Hours',
+      title: 'Business Hours',
       info: businessInfo.contact.workingHours,
-      subInfo: `Sat - Sun: ${businessInfo.contact.weekend}`
+      subInfo: `Weekend: ${businessInfo.contact.weekend}`
     }
   ];
 
