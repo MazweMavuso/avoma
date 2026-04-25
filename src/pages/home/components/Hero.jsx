@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, ArrowRight } from 'lucide-react';
-import backgroundImage from '../assets/images/backgroundimage.png';
-import backgroundImage2 from '../assets/images/backgroundimag2.png';
-import { Reveal } from './animations/Reveal';
-import { Parallax } from './animations/Parallax';
+import backgroundImage from '../../../assets/images/backgroundimage.png';
+import backgroundImage2 from '../../../assets/images/backgroundimag2.png';
+import { Reveal } from '../../../components/shared/animations/Reveal';
+import { Parallax } from '../../../components/shared/animations/Parallax';
 
 const slides = [
   {

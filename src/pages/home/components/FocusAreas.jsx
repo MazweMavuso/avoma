@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { ShieldCheck, Zap, Globe } from 'lucide-react';
-import { Reveal } from './animations/Reveal';
-import { StaggerContainer, StaggerItem } from './animations/Stagger';
+import { Reveal } from '../../../components/shared/animations/Reveal';
+import { StaggerContainer, StaggerItem } from '../../../components/shared/animations/Stagger';
 
 const FocusAreas = () => {
   const areas = [

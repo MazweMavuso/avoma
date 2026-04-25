@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { consumableItems } from '../data/products';
+import { consumableItems } from '../../../data/products';
 import { FaFlask } from 'react-icons/fa';
 
 const ConsumableList = () => {

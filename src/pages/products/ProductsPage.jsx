@@ -1,7 +1,7 @@
-import ProductsHeader from '../components/ProductsHeader';
-import MedicineBrands from '../components/MedicineBrands';
-import ConsumableList from '../components/ConsumableList';
-import CertifiedSection from '../components/CertifiedSection';
+import ProductsHeader from './components/ProductsHeader';
+import MedicineBrands from './components/MedicineBrands';
+import ConsumableList from './components/ConsumableList';
+import CertifiedSection from './components/CertifiedSection';
 
 const ProductsPage = () => {
   return (

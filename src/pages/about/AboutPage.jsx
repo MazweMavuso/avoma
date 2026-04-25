@@ -1,7 +1,7 @@
-import AboutHero from '../components/AboutHero';
-import MissionVision from '../components/MissionVision';
-import CompanyHistory from '../components/CompanyHistory';
-import Partners from '../components/Partners';
+import AboutHero from './components/AboutHero';
+import MissionVision from './components/MissionVision';
+import CompanyHistory from './components/CompanyHistory';
+import Partners from '../../components/shared/Partners';
 
 const AboutPage = () => {
   return (

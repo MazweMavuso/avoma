@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { medicineBrands } from '../data/products';
+import { medicineBrands } from '../../../data/products';
 import { FaPills } from 'react-icons/fa';
 import { ChevronRight } from 'lucide-react';
 

@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
 
 // Partner Logos
-import disaLogo from '../assets/partnars/disa-1500x373.png';
-import elinkCareLogo from '../assets/partnars/E-LinkCare-1500x373.png';
-import hartmannLogo from '../assets/partnars/Hartmann-1500x373.png';
-import neomedicLogo from '../assets/partnars/neomedic-1500x373.png';
-import rossmaxLogo from '../assets/partnars/rossmax-1500x373.png';
+import disaLogo from '../../assets/partnars/disa-1500x373.png';
+import elinkCareLogo from '../../assets/partnars/E-LinkCare-1500x373.png';
+import hartmannLogo from '../../assets/partnars/Hartmann-1500x373.png';
+import neomedicLogo from '../../assets/partnars/neomedic-1500x373.png';
+import rossmaxLogo from '../../assets/partnars/rossmax-1500x373.png';
 
 const Partners = () => {
   const logos = [
