@@ -1,10 +1,7 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import FocusAreas from './components/FocusAreas';
-import Partners from './components/Partners';
-import Contact from './components/Contact';
-import Newsletter from './components/Newsletter';
+import HomePage from './pages/HomePage';
+import ProductsPage from './pages/ProductsPage';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import ScrollProgress from './components/ScrollProgress';
@@ -12,21 +9,21 @@ import Chatbot from './components/Chatbot';
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-500">
-      <ScrollProgress />
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <FocusAreas />
-        <Partners />
-        <Contact />
-        <Newsletter />
-      </main>
-      <Footer />
-      <ScrollToTop />
-      <Chatbot />
-    </div>
+    <Router>
+      <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-500">
+        <ScrollProgress />
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/products" element={<ProductsPage />} />
+          </Routes>
+        </main>
+        <Footer />
+        <ScrollToTop />
+        <Chatbot />
+      </div>
+    </Router>
   );
 }
 

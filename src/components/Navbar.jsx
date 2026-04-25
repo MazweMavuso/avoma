@@ -2,10 +2,12 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Sun, Moon, ArrowRight } from 'lucide-react';
 import { FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
   const [isDarkMode, setIsDarkMode] = useState(() => {
     // Initialize theme from localStorage or system preference
     const savedTheme = localStorage.getItem('theme');
@@ -52,11 +54,11 @@ const Navbar = () => {
   }, [isOpen]);
 
   const navLinks = [
-    { name: 'Home', href: '#' },
-    { name: 'About Us', href: '#about' },
-    { name: 'Focus Areas', href: '#focus' },
-    { name: 'Partners', href: '#partners' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '/' },
+    { name: 'Products', href: '/products' },
+    { name: 'About Us', href: '/#about' },
+    { name: 'Partners', href: '/#partners' },
+    { name: 'Contact', href: '/#contact' },
   ];
 
   return (
@@ -83,11 +85,13 @@ const Navbar = () => {
               transition={{ delay: 0.8, duration: 0.5 }}
               className="flex-shrink-0 flex items-center"
             >
-              <img 
-                className="h-12 w-auto hover:scale-105 transition-transform duration-300" 
-                src="/avoma-pharma-logo.png" 
-                alt="Avoma Pharma Logo" 
-              />
+              <Link to="/">
+                <img 
+                  className="h-12 w-auto hover:scale-105 transition-transform duration-300" 
+                  src="/avoma-pharma-logo.png" 
+                  alt="Avoma Pharma Logo" 
+                />
+              </Link>
             </motion.div>
             
             {/* Desktop Menu */}
@@ -106,18 +110,35 @@ const Navbar = () => {
                 className="flex items-center space-x-10"
               >
                 {navLinks.map((link) => (
-                  <motion.a
+                  <motion.div
                     key={link.name}
-                    href={link.href}
                     variants={{
                       hidden: { opacity: 0, y: -10 },
                       visible: { opacity: 1, y: 0 }
                     }}
-                    className="relative text-gray-800 dark:text-gray-200 hover:text-orange-600 dark:hover:text-orange-500 text-[13px] font-black uppercase tracking-[0.15em] transition-colors group"
                   >
-                    {link.name}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-600 transition-all duration-300 group-hover:w-full"></span>
-                  </motion.a>
+                    {link.href.startsWith('/#') ? (
+                      <a
+                        href={link.href}
+                        className="relative text-gray-800 dark:text-gray-200 hover:text-orange-600 dark:hover:text-orange-500 text-[13px] font-black uppercase tracking-[0.15em] transition-colors group"
+                      >
+                        {link.name}
+                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-600 transition-all duration-300 group-hover:w-full"></span>
+                      </a>
+                    ) : (
+                      <Link
+                        to={link.href}
+                        className={`relative text-[13px] font-black uppercase tracking-[0.15em] transition-colors group ${
+                          location.pathname === link.href 
+                            ? 'text-orange-600 dark:text-orange-500' 
+                            : 'text-gray-800 dark:text-gray-200 hover:text-orange-600 dark:hover:text-orange-500'
+                        }`}
+                      >
+                        {link.name}
+                        <span className={`absolute -bottom-1 left-0 h-0.5 bg-orange-600 transition-all duration-300 group-hover:w-full ${location.pathname === link.href ? 'w-full' : 'w-0'}`}></span>
+                      </Link>
+                    )}
+                  </motion.div>
                 ))}
               </motion.div>
               
@@ -204,20 +225,42 @@ const Navbar = () => {
               <div className="flex-grow overflow-y-auto py-8 px-6">
                 <div className="flex flex-col space-y-2">
                   {navLinks.map((link, idx) => (
-                    <motion.a
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.1 + idx * 0.05 }}
-                      key={link.name}
-                      href={link.href}
-                      onClick={() => setIsOpen(false)}
-                      className="group flex items-center justify-between p-4 rounded-2xl hover:bg-orange-50 dark:hover:bg-orange-950/20 transition-all"
-                    >
-                      <span className="text-lg font-black uppercase tracking-widest text-gray-800 dark:text-gray-200 group-hover:text-orange-600 dark:group-hover:text-orange-500">
-                        {link.name}
-                      </span>
-                      <ArrowRight size={18} className="text-gray-300 dark:text-gray-700 group-hover:text-orange-600 group-hover:translate-x-1 transition-all" />
-                    </motion.a>
+                    link.href.startsWith('/#') ? (
+                      <motion.a
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.1 + idx * 0.05 }}
+                        key={link.name}
+                        href={link.href}
+                        onClick={() => setIsOpen(false)}
+                        className="group flex items-center justify-between p-4 rounded-2xl hover:bg-orange-50 dark:hover:bg-orange-950/20 transition-all"
+                      >
+                        <span className="text-lg font-black uppercase tracking-widest text-gray-800 dark:text-gray-200 group-hover:text-orange-600 dark:group-hover:text-orange-500">
+                          {link.name}
+                        </span>
+                        <ArrowRight size={18} className="text-gray-300 dark:text-gray-700 group-hover:text-orange-600 group-hover:translate-x-1 transition-all" />
+                      </motion.a>
+                    ) : (
+                      <Link
+                        key={link.name}
+                        to={link.href}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <motion.div
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.1 + idx * 0.05 }}
+                          className="group flex items-center justify-between p-4 rounded-2xl hover:bg-orange-50 dark:hover:bg-orange-950/20 transition-all cursor-pointer"
+                        >
+                          <span className={`text-lg font-black uppercase tracking-widest group-hover:text-orange-600 dark:group-hover:text-orange-500 transition-colors ${
+                            location.pathname === link.href ? 'text-orange-600 dark:text-orange-500' : 'text-gray-800 dark:text-gray-200'
+                          }`}>
+                            {link.name}
+                          </span>
+                          <ArrowRight size={18} className="text-gray-300 dark:text-gray-700 group-hover:text-orange-600 group-hover:translate-x-1 transition-all" />
+                        </motion.div>
+                      </Link>
+                    )
                   ))}
                 </div>
               </div>
