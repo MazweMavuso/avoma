@@ -122,7 +122,7 @@ const Navbar = () => {
                     {link.href.startsWith('/#') ? (
                       <a
                         href={link.href}
-                        className="relative text-gray-800 dark:text-gray-200 hover:text-orange-600 dark:hover:text-orange-500 text-[13px] font-black uppercase tracking-[0.15em] transition-colors group"
+                        className="relative text-gray-800 dark:text-gray-200 hover:text-orange-600 dark:hover:text-orange-500 text-[13px] font-black uppercase tracking-[0.15em] transition-colors group whitespace-nowrap"
                       >
                         {link.name}
                         <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-600 transition-all duration-300 group-hover:w-full"></span>
@@ -130,7 +130,7 @@ const Navbar = () => {
                     ) : (
                       <Link
                         to={link.href}
-                        className={`relative text-[13px] font-black uppercase tracking-[0.15em] transition-colors group ${
+                        className={`relative text-[13px] font-black uppercase tracking-[0.15em] transition-colors group whitespace-nowrap ${
                           location.pathname === link.href 
                             ? 'text-orange-600 dark:text-orange-500' 
                             : 'text-gray-800 dark:text-gray-200 hover:text-orange-600 dark:hover:text-orange-500'
