@@ -80,8 +80,8 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background Image Carousel - Now absolute and full height */}
+    <section className="relative h-screen h-[100dvh] flex items-center overflow-hidden">
+      {/* Background Image Carousel */}
       <div className="absolute inset-0 z-0 h-full w-full">
         <AnimatePresence mode="wait">
           <motion.div
@@ -96,7 +96,7 @@ const Hero = () => {
               <img 
                 src={slides[currentSlide].image} 
                 alt="Healthcare Background" 
-                className="w-full h-screen object-cover object-right lg:object-center"
+                className="w-full h-full object-cover object-right lg:object-center"
               />
             </Parallax>
           </motion.div>
@@ -104,7 +104,7 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/20 to-transparent lg:from-white lg:via-white/90 lg:to-white/20 dark:from-gray-950/80 dark:via-gray-950/20 dark:to-transparent lg:dark:from-gray-950 lg:dark:via-gray-950/95 lg:dark:to-transparent z-10"></div>
       </div>
 
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-32 pb-20">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20">
         <div className="lg:max-w-2xl">
           <AnimatePresence mode="wait">
             <motion.div
@@ -114,62 +114,62 @@ const Hero = () => {
               animate="visible"
               exit="exit"
             >
-              <motion.div variants={itemVariants} className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-orange-50 dark:bg-orange-950/20 border border-orange-100 dark:border-orange-900/30 mb-8">
+              <motion.div variants={itemVariants} className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-orange-50 dark:bg-orange-950/20 border border-orange-100 dark:border-orange-900/30 mb-4 sm:mb-8">
                 <span className="flex h-2 w-2 rounded-full bg-orange-600 animate-pulse"></span>
-                <span className="text-orange-700 dark:text-orange-400 text-sm font-bold tracking-wide uppercase">{slides[currentSlide].subtitle}</span>
+                <span className="text-orange-700 dark:text-orange-400 text-[10px] sm:text-xs font-bold tracking-wide uppercase">{slides[currentSlide].subtitle}</span>
               </motion.div>
               
-              <motion.h1 variants={itemVariants} className="text-5xl lg:text-7xl tracking-tight font-black text-gray-900 dark:text-white leading-[1.1]">
+              <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl lg:text-7xl tracking-tight font-black text-gray-900 dark:text-white leading-[1.1]">
                 {slides[currentSlide].title.split(' ').slice(0, -1).join(' ')} <br />
                 <span className="text-orange-600 underline decoration-blue-600/30">
                   {slides[currentSlide].title.split(' ').pop()}
                 </span>
               </motion.h1>
               
-              <motion.p variants={itemVariants} className="mt-8 text-xl text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl font-medium">
+              <motion.p variants={itemVariants} className="mt-4 sm:mt-8 text-lg sm:text-xl text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl font-medium line-clamp-3 sm:line-clamp-none">
                 {slides[currentSlide].description}
               </motion.p>
               
-              <motion.div variants={itemVariants} className="mt-12 flex flex-col sm:flex-row gap-5">
-                <Link to={slides[currentSlide].primaryLink}>
+              <motion.div variants={itemVariants} className="mt-8 sm:mt-12 flex flex-col sm:flex-row gap-4 sm:gap-5">
+                <Link to={slides[currentSlide].primaryLink} className="w-full sm:w-auto">
                   <motion.button 
                     whileHover={{ scale: 1.05, backgroundColor: '#ea580c' }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-full sm:w-auto flex items-center justify-center px-10 py-4.5 bg-orange-600 text-white font-black rounded-2xl shadow-2xl shadow-orange-200 dark:shadow-none transition-all text-lg group"
+                    className="w-full sm:w-auto flex items-center justify-center px-8 sm:px-10 py-3.5 sm:py-4.5 bg-orange-600 text-white font-black rounded-2xl shadow-2xl shadow-orange-200 dark:shadow-none transition-all text-base sm:text-lg group"
                   >
                     {slides[currentSlide].primaryBtn}
-                    <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" size={22} />
+                    <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
                   </motion.button>
                 </Link>
                 
-                <Link to={slides[currentSlide].secondaryLink}>
+                <Link to={slides[currentSlide].secondaryLink} className="w-full sm:w-auto">
                   <motion.button 
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-full sm:w-auto flex items-center justify-center px-10 py-4.5 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-bold rounded-2xl border-2 border-gray-100 dark:border-gray-700 hover:border-orange-600 hover:text-orange-600 transition-all text-lg group"
+                    className="w-full sm:w-auto flex items-center justify-center px-8 sm:px-10 py-3.5 sm:py-4.5 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-bold rounded-2xl border-2 border-gray-100 dark:border-gray-700 hover:border-orange-600 hover:text-orange-600 transition-all text-base sm:text-lg group"
                   >
                     {slides[currentSlide].secondaryBtn}
-                    <ArrowRight className="ml-2 text-gray-400 group-hover:text-orange-600 transition-colors" size={22} />
+                    <ArrowRight className="ml-2 text-gray-400 group-hover:text-orange-600 transition-colors" size={20} />
                   </motion.button>
                 </Link>
               </motion.div>
             </motion.div>
           </AnimatePresence>
 
-          {/* Quick Stats/Trust Indicators */}
+          {/* Quick Stats/Trust Indicators - Condensed for 100vh */}
           <Reveal>
-            <div className="mt-20 grid grid-cols-2 sm:grid-cols-3 gap-10 border-t border-gray-100 dark:border-gray-800 pt-10">
+            <div className="mt-12 sm:mt-16 lg:mt-20 grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-10 border-t border-gray-100 dark:border-gray-800 pt-6 sm:pt-10">
               <div>
-                <p className="text-4xl font-black text-gray-900 dark:text-white">100+</p>
-                <p className="text-sm text-blue-600 dark:text-blue-400 font-bold uppercase tracking-widest mt-1">Quality Products</p>
+                <p className="text-2xl sm:text-4xl font-black text-gray-900 dark:text-white">100+</p>
+                <p className="text-[10px] sm:text-sm text-blue-600 dark:text-blue-400 font-bold uppercase tracking-widest mt-1">Quality Products</p>
               </div>
               <div>
-                <p className="text-4xl font-black text-gray-900 dark:text-white">24/7</p>
-                <p className="text-sm text-blue-600 dark:text-blue-400 font-bold uppercase tracking-widest mt-1">Partner Support</p>
+                <p className="text-2xl sm:text-4xl font-black text-gray-900 dark:text-white">24/7</p>
+                <p className="text-[10px] sm:text-sm text-blue-600 dark:text-blue-400 font-bold uppercase tracking-widest mt-1">Partner Support</p>
               </div>
               <div className="hidden sm:block">
-                <p className="text-4xl font-black text-gray-900 dark:text-white">ISO</p>
-                <p className="text-sm text-blue-600 dark:text-blue-400 font-bold uppercase tracking-widest mt-1">Certified Standards</p>
+                <p className="text-2xl sm:text-4xl font-black text-gray-900 dark:text-white">ISO</p>
+                <p className="text-[10px] sm:text-sm text-blue-600 dark:text-blue-400 font-bold uppercase tracking-widest mt-1">Certified Standards</p>
               </div>
             </div>
           </Reveal>
