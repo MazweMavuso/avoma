@@ -112,11 +112,6 @@ const Hero = () => {
               animate="visible"
               exit="exit"
             >
-              <motion.div variants={itemVariants} className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-orange-50 dark:bg-orange-950/20 border border-orange-100 dark:border-orange-900/30 mb-4 sm:mb-6">
-                <span className="flex h-2 w-2 rounded-full bg-orange-600 animate-pulse"></span>
-                <span className="text-orange-700 dark:text-orange-400 text-[10px] font-black tracking-widest uppercase">{slides[currentSlide].subtitle}</span>
-              </motion.div>
-              
               <motion.h1 variants={itemVariants} className="text-3xl sm:text-4xl lg:text-6xl tracking-tight font-black text-gray-900 dark:text-white leading-[1.1] uppercase">
                 {slides[currentSlide].title.split(' ').slice(0, -1).join(' ')} <br />
                 <span className="text-orange-600">
@@ -149,6 +144,11 @@ const Hero = () => {
                     {slides[currentSlide].secondaryBtn}
                   </motion.button>
                 </Link>
+              </motion.div>
+
+              <motion.div variants={itemVariants} className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-orange-50 dark:bg-orange-950/20 border border-orange-100 dark:border-orange-900/30 mt-8">
+                <span className="flex h-1.5 w-1.5 rounded-full bg-orange-600 animate-pulse"></span>
+                <span className="text-orange-700 dark:text-orange-400 text-[10px] font-black tracking-widest uppercase">{slides[currentSlide].subtitle}</span>
               </motion.div>
             </motion.div>
           </AnimatePresence>
