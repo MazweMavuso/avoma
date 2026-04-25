@@ -273,7 +273,7 @@ const Chatbot = () => {
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Type your message..."
-                  className="w-full bg-gray-100/50 dark:bg-gray-800/50 text-gray-900 dark:text-white text-sm font-medium px-5 py-4 rounded-2xl border border-transparent focus:bg-white dark:focus:bg-gray-800 focus:border-orange-600/30 focus:ring-4 focus:ring-orange-600/5 outline-none transition-all pr-12"
+                  className="w-full bg-gray-100/50 dark:bg-gray-800/50 text-gray-900 dark:text-white text-base font-medium px-5 py-4 rounded-2xl border border-transparent focus:bg-white dark:focus:bg-gray-800 focus:border-orange-600/30 focus:ring-4 focus:ring-orange-600/5 outline-none transition-all pr-12"
                 />
                 <button
                   type="submit"
