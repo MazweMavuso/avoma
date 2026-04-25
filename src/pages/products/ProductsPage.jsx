@@ -1,5 +1,4 @@
 import ProductsHeader from './components/ProductsHeader';
-import MedicineBrands from './components/MedicineBrands';
 import ConsumableList from './components/ConsumableList';
 import CertifiedSection from './components/CertifiedSection';
 
@@ -8,7 +7,6 @@ const ProductsPage = () => {
     <div className="pt-32 pb-20 bg-white dark:bg-gray-950 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ProductsHeader />
-        <MedicineBrands />
         <ConsumableList />
         <CertifiedSection />
       </div>

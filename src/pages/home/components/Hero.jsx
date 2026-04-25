@@ -96,12 +96,12 @@ const Hero = () => {
               <img 
                 src={slides[currentSlide].image} 
                 alt="Healthcare Background" 
-                className="w-full h-screen object-cover object-center lg:object-center"
+                className="w-full h-screen object-cover object-right lg:object-center"
               />
             </Parallax>
           </motion.div>
         </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-transparent lg:to-white/20 dark:from-gray-950 dark:via-gray-950/95 dark:to-transparent z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/20 to-transparent lg:from-white lg:via-white/90 lg:to-white/20 dark:from-gray-950/80 dark:via-gray-950/20 dark:to-transparent lg:dark:from-gray-950 lg:dark:via-gray-950/95 lg:dark:to-transparent z-10"></div>
       </div>
 
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-32 pb-20">
