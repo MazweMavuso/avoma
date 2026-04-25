@@ -184,13 +184,15 @@ const Navbar = () => {
                   {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
                 </button>
 
-                <motion.button 
-                  whileHover={{ scale: 1.05, backgroundColor: '#ea580c' }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-orange-600 text-white font-black text-[13px] uppercase tracking-widest px-8 py-3.5 rounded-2xl hover:shadow-[0_10px_20px_rgba(234,88,12,0.2)] transition-all"
-                >
-                  Sign Up
-                </motion.button>
+                <Link to="/signup">
+                  <motion.button 
+                    whileHover={{ scale: 1.05, backgroundColor: '#ea580c' }}
+                    whileTap={{ scale: 0.95 }}
+                    className="bg-orange-600 text-white font-black text-[13px] uppercase tracking-widest px-8 py-3.5 rounded-2xl hover:shadow-[0_10px_20px_rgba(234,88,12,0.2)] transition-all"
+                  >
+                    Sign Up
+                  </motion.button>
+                </Link>
               </motion.div>
 
               {/* Mobile menu trigger */}
@@ -294,9 +296,11 @@ const Navbar = () => {
               </div>
 
               <div className="p-8 bg-gray-50 dark:bg-gray-900/50">
-                <button className="w-full bg-orange-600 text-white font-black py-5 rounded-2xl shadow-xl shadow-orange-900/10 text-base uppercase tracking-widest mb-8">
-                  Sign Up Now
-                </button>
+                <Link to="/signup" onClick={() => setIsOpen(false)}>
+                  <button className="w-full bg-orange-600 text-white font-black py-5 rounded-2xl shadow-xl shadow-orange-900/10 text-base uppercase tracking-widest mb-8">
+                    Sign Up Now
+                  </button>
+                </Link>
                 
                 <div className="flex justify-center space-x-6 text-gray-400 dark:text-gray-600">
                   <FaFacebook size={20} />
