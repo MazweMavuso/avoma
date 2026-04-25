@@ -39,7 +39,7 @@ const Loader = ({ finishLoading }) => {
           transition={{ duration: 1 }}
           className="mb-12"
         >
-          <img src="/avoma-pharma-logo.png" alt="Logo" className="h-16 w-auto dark:brightness-0 dark:invert" />
+          <img src="/avoma-pharma-logo.png" alt="Logo" className="h-16 w-auto" />
         </motion.div>
 
         {/* Percentage Text */}

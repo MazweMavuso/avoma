@@ -80,7 +80,7 @@ const Navbar = () => {
             <div className="flex-1 flex justify-start items-center">
               <Link to="/" onClick={() => setIsOpen(false)}>
                 <img 
-                  className={`h-10 sm:h-12 w-auto hover:scale-105 transition-transform duration-300 ${isDarkMode ? 'brightness-0 invert' : ''}`} 
+                  className="h-10 sm:h-12 w-auto hover:scale-105 transition-transform duration-300" 
                   src="/avoma-pharma-logo.png" 
                   alt="Avoma Pharma Logo" 
                 />
@@ -168,7 +168,7 @@ const Navbar = () => {
               className="fixed top-0 left-0 bottom-0 w-[85%] max-w-sm bg-white dark:bg-gray-950 z-[70] lg:hidden shadow-2xl flex flex-col"
             >
               <div className="p-8 flex items-center justify-between border-b border-gray-100 dark:border-gray-900">
-                <img className={`h-8 w-auto ${isDarkMode ? 'brightness-0 invert' : ''}`} src="/avoma-pharma-logo.png" alt="Logo" />
+                <img className="h-8 w-auto" src="/avoma-pharma-logo.png" alt="Logo" />
                 <button
                   onClick={() => setIsOpen(false)}
                   className="p-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
