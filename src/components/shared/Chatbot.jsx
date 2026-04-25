@@ -51,8 +51,9 @@ const Chatbot = () => {
   const scrollRef = useRef(null);
   const idRef = useRef(2);
 
-  // Responsive state
+  // Responsive and Keyboard state
   const [isMobile, setIsMobile] = useState(false);
+  const [viewportHeight, setViewportHeight] = useState('100dvh');
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 640);
@@ -60,6 +61,37 @@ const Chatbot = () => {
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  // Keyboard awareness logic
+  useEffect(() => {
+    if (!isMobile || !isOpen) return;
+
+    const handleViewportChange = () => {
+      if (window.visualViewport) {
+        // Set height to visual viewport height to avoid keyboard overlap
+        setViewportHeight(`${window.visualViewport.height}px`);
+        
+        // If keyboard is open, scroll to bottom
+        if (window.visualViewport.height < window.innerHeight) {
+          setTimeout(() => {
+            scrollRef.current?.scrollTo({
+              top: scrollRef.current.scrollHeight,
+              behavior: 'smooth'
+            });
+          }, 100);
+        }
+      }
+    };
+
+    window.visualViewport?.addEventListener('resize', handleViewportChange);
+    window.visualViewport?.addEventListener('scroll', handleViewportChange);
+    handleViewportChange();
+
+    return () => {
+      window.visualViewport?.removeEventListener('resize', handleViewportChange);
+      window.visualViewport?.removeEventListener('scroll', handleViewportChange);
+    };
+  }, [isMobile, isOpen]);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -88,9 +120,6 @@ const Chatbot = () => {
     try {
       const apiKey = import.meta.env.VITE_OPENROUTER_API_KEY;
       
-      // Debug check (will show in console)
-      console.log('Chatbot: Checking API Key configuration...');
-
       if (!apiKey || apiKey === 'your_openrouter_api_key_here') {
         throw new Error('MISSING_KEY');
       }
@@ -100,8 +129,8 @@ const Chatbot = () => {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${apiKey}`,
-          'HTTP-Referer': window.location.origin, // Required for OpenRouter
-          'X-Title': 'Avoma Pharma AI' // Optional for OpenRouter
+          'HTTP-Referer': window.location.origin,
+          'X-Title': 'Avoma Pharma AI'
         },
         body: JSON.stringify({
           model: "openai/gpt-oss-120b:free",
@@ -120,7 +149,6 @@ const Chatbot = () => {
       const data = await response.json();
       
       if (!response.ok) {
-        console.error('OpenRouter API Error:', data);
         throw new Error(data.error?.message || 'API request failed');
       }
 
@@ -132,14 +160,10 @@ const Chatbot = () => {
       };
       setMessages(prev => [...prev, botResponse]);
     } catch (error) {
-      console.error('Chatbot Error Details:', error);
-      
       let errorMessage = "I'm having trouble connecting right now. Please try again later.";
       
       if (error.message === 'MISSING_KEY') {
-        errorMessage = "Configuration Error: The VITE_OPENROUTER_API_KEY is missing. Please add it to your .env file and restart the server.";
-      } else if (error.message.includes('API request failed')) {
-        errorMessage = "I couldn't reach the AI service. Please check your OpenRouter credits or API key validity.";
+        errorMessage = "Configuration Error: The VITE_OPENROUTER_API_KEY is missing.";
       }
 
       const errorId = idRef.current++;
@@ -164,13 +188,14 @@ const Chatbot = () => {
             animate={isMobile ? { y: 0 } : { opacity: 1, scale: 1, y: 0 }}
             exit={isMobile ? { y: '100%' } : { opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+            style={isMobile ? { height: viewportHeight } : {}}
             className={`
               bg-white/80 dark:bg-gray-950/80 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.1)] border border-white/20 dark:border-white/10 overflow-hidden flex flex-col
-              ${isMobile ? 'w-full h-full rounded-none' : 'mb-4 w-[380px] h-[450px] rounded-[32px]'}
+              ${isMobile ? 'w-full rounded-none' : 'mb-4 w-[380px] h-[450px] rounded-[32px]'}
             `}
           >
-            {/* Header - More Minimal & Modern */}
-            <div className={`p-5 flex items-center justify-between border-b border-gray-100/50 dark:border-gray-800/50 ${isMobile ? 'pt-12' : ''}`}>
+            {/* Header */}
+            <div className={`p-5 flex items-center justify-between border-b border-gray-100/50 dark:border-gray-800/50 ${isMobile ? 'pt-8' : ''}`}>
               <div className="flex items-center space-x-3">
                 <div className="relative">
                   <div className="w-10 h-10 bg-orange-600 rounded-2xl flex items-center justify-center shadow-lg shadow-orange-600/20">
@@ -191,7 +216,7 @@ const Chatbot = () => {
               </button>
             </div>
 
-            {/* Messages - Softer Bubbles */}
+            {/* Messages */}
             <div 
               ref={scrollRef}
               className="flex-grow overflow-y-auto p-5 space-y-4 scrollbar-hide"
@@ -240,8 +265,8 @@ const Chatbot = () => {
               )}
             </div>
 
-            {/* Input - Sleeker Integration */}
-            <div className={`p-5 ${isMobile ? 'pb-10' : ''}`}>
+            {/* Input */}
+            <div className={`p-4 ${isMobile ? 'pb-4 px-4' : 'p-5'}`}>
               <form onSubmit={handleSend} className="relative group">
                 <input
                   type="text"
@@ -263,7 +288,7 @@ const Chatbot = () => {
         )}
       </AnimatePresence>
 
-      {/* Toggle Button - Liquid Style */}
+      {/* Toggle Button */}
       {!isOpen && (
         <motion.button
           whileHover={{ scale: 1.05, y: -2 }}
