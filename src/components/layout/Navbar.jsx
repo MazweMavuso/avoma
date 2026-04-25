@@ -1,22 +1,19 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sun, Moon, ArrowRight, Globe, Phone } from 'lucide-react';
+import { Menu, X, Sun, Moon, ArrowRight } from 'lucide-react';
 import { FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
-import { businessInfo } from '../../data/businessInfo';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const [isDarkMode, setIsDarkMode] = useState(() => {
-    // Initialize theme from localStorage or system preference
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     return savedTheme === 'dark' || (!savedTheme && prefersDark);
   });
 
-  // Apply theme class on mount and when isDarkMode changes
   useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add('dark');
@@ -39,13 +36,13 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      // Small buffer to allow TopBar to scroll away naturally
+      setScrolled(window.scrollY > 40);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Prevent scroll when mobile menu is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -63,34 +60,12 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Top Bar - Desktop Only */}
-      <div className="hidden lg:block fixed top-0 w-full z-[60] bg-gray-950 text-white py-2 px-8 border-b border-white/5">
-        <div className="max-w-7xl mx-auto flex justify-between items-center text-[10px] font-black uppercase tracking-[0.2em]">
-          <div className="flex items-center space-x-8">
-            <div className="flex items-center space-x-2">
-              <Globe size={12} className="text-orange-600" />
-              <span className="opacity-80">Serving: {businessInfo.countries.join(' & ')}</span>
-            </div>
-          </div>
-          <div className="flex items-center space-x-8">
-            <div className="flex items-center space-x-2 border-r border-white/10 pr-8">
-              <span className="text-orange-500">SZ:</span>
-              <a href={`tel:${businessInfo.regionalContacts.eswatini[0]}`} className="hover:text-orange-500 transition-colors">{businessInfo.regionalContacts.eswatini[0]}</a>
-            </div>
-            <div className="flex items-center space-x-2">
-              <span className="text-orange-500">MZ:</span>
-              <a href={`tel:${businessInfo.regionalContacts.mozambique[0]}`} className="hover:text-orange-500 transition-colors">{businessInfo.regionalContacts.mozambique[0]}</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <motion.nav 
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed w-full z-50 transition-all duration-500 px-4 sm:px-8 py-4 ${
-          scrolled ? 'top-10 lg:top-8' : 'top-0 lg:top-6'
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        className={`fixed w-full z-50 transition-all duration-500 px-4 sm:px-8 ${
+          scrolled ? 'py-4 top-0' : 'py-6 top-0'
         }`}
       >
         <div 
@@ -103,82 +78,41 @@ const Navbar = () => {
           <div className="flex justify-between h-20 items-center px-6 sm:px-10">
             {/* Logo Container */}
             <div className="flex-1 flex justify-start items-center">
-              <motion.div 
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.8, duration: 0.5 }}
-                className="flex items-center"
-              >
-                <Link to="/">
-                  <img 
-                    className="h-12 w-auto hover:scale-105 transition-transform duration-300" 
-                    src="/avoma-pharma-logo.png" 
-                    alt="Avoma Pharma Logo" 
-                  />
-                </Link>
-              </motion.div>
+              <Link to="/" onClick={() => setIsOpen(false)}>
+                <img 
+                  className={`h-10 sm:h-12 w-auto hover:scale-105 transition-transform duration-300 ${isDarkMode ? 'brightness-0 invert' : ''}`} 
+                  src="/avoma-pharma-logo.png" 
+                  alt="Avoma Pharma Logo" 
+                />
+              </Link>
             </div>
             
-            {/* Desktop Nav Links - Centered */}
+            {/* Desktop Nav Links */}
             <div className="hidden lg:flex flex-1 justify-center items-center">
-              <motion.div 
-                initial="hidden"
-                animate="visible"
-                variants={{
-                  visible: {
-                    transition: {
-                      staggerChildren: 0.1,
-                      delayChildren: 1.0
-                    }
-                  }
-                }}
-                className="flex items-center space-x-10"
-              >
+              <div className="flex items-center space-x-10">
                 {navLinks.map((link) => (
-                  <motion.div
+                  <Link
                     key={link.name}
-                    variants={{
-                      hidden: { opacity: 0, y: -10 },
-                      visible: { opacity: 1, y: 0 }
-                    }}
+                    to={link.href}
+                    className={`relative text-[13px] font-black uppercase tracking-[0.15em] transition-colors group whitespace-nowrap ${
+                      location.pathname === link.href 
+                        ? 'text-orange-600 dark:text-orange-500' 
+                        : 'text-gray-800 dark:text-gray-200 hover:text-orange-600 dark:hover:text-orange-500'
+                    }`}
                   >
-                    {link.href.startsWith('/#') ? (
-                      <a
-                        href={link.href}
-                        className="relative text-gray-800 dark:text-gray-200 hover:text-orange-600 dark:hover:text-orange-500 text-[13px] font-black uppercase tracking-[0.15em] transition-colors group whitespace-nowrap"
-                      >
-                        {link.name}
-                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-600 transition-all duration-300 group-hover:w-full"></span>
-                      </a>
-                    ) : (
-                      <Link
-                        to={link.href}
-                        className={`relative text-[13px] font-black uppercase tracking-[0.15em] transition-colors group whitespace-nowrap ${
-                          location.pathname === link.href 
-                            ? 'text-orange-600 dark:text-orange-500' 
-                            : 'text-gray-800 dark:text-gray-200 hover:text-orange-600 dark:hover:text-orange-500'
-                        }`}
-                      >
-                        {link.name}
-                        <span className={`absolute -bottom-1 left-0 h-0.5 bg-orange-600 transition-all duration-300 group-hover:w-full ${location.pathname === link.href ? 'w-full' : 'w-0'}`}></span>
-                      </Link>
-                    )}
-                  </motion.div>
+                    {link.name}
+                    <span className={`absolute -bottom-1 left-0 h-0.5 bg-orange-600 transition-all duration-300 group-hover:w-full ${location.pathname === link.href ? 'w-full' : 'w-0'}`}></span>
+                  </Link>
                 ))}
-              </motion.div>
+              </div>
             </div>
 
-            {/* Actions Container - Right aligned */}
+            {/* Actions Container */}
             <div className="flex-1 flex justify-end items-center space-x-6">
-              <motion.div 
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1.6, duration: 0.5 }}
-                className="hidden lg:flex items-center space-x-6"
-              >
+              <div className="hidden lg:flex items-center space-x-6">
                 <button
                   onClick={toggleDarkMode}
-                  className="p-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-orange-50 dark:hover:bg-orange-900/20 hover:text-orange-600 dark:hover:text-orange-500 transition-all duration-300 border border-transparent hover:border-orange-200 dark:hover:border-orange-500/30"
+                  className="p-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-orange-50 dark:hover:bg-orange-900/20 hover:text-orange-600 dark:hover:text-orange-500 transition-all duration-300 border border-transparent"
                   aria-label="Toggle Dark Mode"
                 >
                   {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
@@ -193,15 +127,10 @@ const Navbar = () => {
                     Sign Up
                   </motion.button>
                 </Link>
-              </motion.div>
+              </div>
 
               {/* Mobile menu trigger */}
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.8 }}
-                className="lg:hidden flex items-center space-x-2"
-              >
+              <div className="lg:hidden flex items-center space-x-2">
                 <button
                   onClick={toggleDarkMode}
                   className="p-2.5 rounded-xl text-gray-800 dark:text-gray-200"
@@ -214,13 +143,13 @@ const Navbar = () => {
                 >
                   <Menu size={24} />
                 </button>
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>
       </motion.nav>
 
-      {/* Mobile Drawer Overlay */}
+      {/* Mobile Drawer */}
       <AnimatePresence>
         {isOpen && (
           <>
@@ -239,11 +168,7 @@ const Navbar = () => {
               className="fixed top-0 left-0 bottom-0 w-[85%] max-w-sm bg-white dark:bg-gray-950 z-[70] lg:hidden shadow-2xl flex flex-col"
             >
               <div className="p-8 flex items-center justify-between border-b border-gray-100 dark:border-gray-900">
-                <img 
-                  className="h-8 w-auto" 
-                  src="/avoma-pharma-logo.png" 
-                  alt="Logo" 
-                />
+                <img className={`h-8 w-auto ${isDarkMode ? 'brightness-0 invert' : ''}`} src="/avoma-pharma-logo.png" alt="Logo" />
                 <button
                   onClick={() => setIsOpen(false)}
                   className="p-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
@@ -255,42 +180,25 @@ const Navbar = () => {
               <div className="flex-grow overflow-y-auto py-8 px-6">
                 <div className="flex flex-col space-y-2">
                   {navLinks.map((link, idx) => (
-                    link.href.startsWith('/#') ? (
-                      <motion.a
+                    <Link
+                      key={link.name}
+                      to={link.href}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.1 + idx * 0.05 }}
-                        key={link.name}
-                        href={link.href}
-                        onClick={() => setIsOpen(false)}
-                        className="group flex items-center justify-between p-4 rounded-2xl hover:bg-orange-50 dark:hover:bg-orange-950/20 transition-all"
+                        className="group flex items-center justify-between p-4 rounded-2xl hover:bg-orange-50 dark:hover:bg-orange-950/20 transition-all cursor-pointer"
                       >
-                        <span className="text-lg font-black uppercase tracking-widest text-gray-800 dark:text-gray-200 group-hover:text-orange-600 dark:group-hover:text-orange-500">
+                        <span className={`text-lg font-black uppercase tracking-widest group-hover:text-orange-600 dark:group-hover:text-orange-500 transition-colors ${
+                          location.pathname === link.href ? 'text-orange-600 dark:text-orange-500' : 'text-gray-800 dark:text-gray-200'
+                        }`}>
                           {link.name}
                         </span>
                         <ArrowRight size={18} className="text-gray-300 dark:text-gray-700 group-hover:text-orange-600 group-hover:translate-x-1 transition-all" />
-                      </motion.a>
-                    ) : (
-                      <Link
-                        key={link.name}
-                        to={link.href}
-                        onClick={() => setIsOpen(false)}
-                      >
-                        <motion.div
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.1 + idx * 0.05 }}
-                          className="group flex items-center justify-between p-4 rounded-2xl hover:bg-orange-50 dark:hover:bg-orange-950/20 transition-all cursor-pointer"
-                        >
-                          <span className={`text-lg font-black uppercase tracking-widest group-hover:text-orange-600 dark:group-hover:text-orange-500 transition-colors ${
-                            location.pathname === link.href ? 'text-orange-600 dark:text-orange-500' : 'text-gray-800 dark:text-gray-200'
-                          }`}>
-                            {link.name}
-                          </span>
-                          <ArrowRight size={18} className="text-gray-300 dark:text-gray-700 group-hover:text-orange-600 group-hover:translate-x-1 transition-all" />
-                        </motion.div>
-                      </Link>
-                    )
+                      </motion.div>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -315,6 +223,5 @@ const Navbar = () => {
     </>
   );
 };
-
 
 export default Navbar;

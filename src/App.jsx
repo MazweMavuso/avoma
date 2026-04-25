@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/layout/Navbar';
+import TopBar from './components/layout/TopBar';
 import HomePage from './pages/home/HomePage';
 import ProductsPage from './pages/products/ProductsPage';
 import AboutPage from './pages/about/AboutPage';
@@ -28,6 +29,7 @@ const App = () => {
         <>
           <ScrollReset />
           <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-500">
+            <TopBar />
             <ScrollProgress />
             <Navbar />
             <main>

@@ -102,7 +102,7 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/40 to-transparent lg:from-white lg:via-white/95 lg:to-white/10 dark:from-gray-950/90 dark:via-gray-950/40 dark:to-transparent lg:dark:from-gray-950 lg:dark:via-gray-950/95 lg:dark:to-transparent z-10"></div>
       </div>
 
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-28 pb-10">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-44 pb-10">
         <div className="lg:max-w-2xl">
           <AnimatePresence mode="wait">
             <motion.div
