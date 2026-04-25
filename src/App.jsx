@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import ProductsPage from './pages/ProductsPage';
 import AboutPage from './pages/AboutPage';
+import ScrollReset from './components/ScrollReset';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import ScrollProgress from './components/ScrollProgress';
@@ -11,6 +12,7 @@ import Chatbot from './components/Chatbot';
 const App = () => {
   return (
     <Router>
+      <ScrollReset />
       <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-500">
         <ScrollProgress />
         <Navbar />
