@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Sun, Moon, ArrowRight } from 'lucide-react';
 import { FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';
@@ -6,21 +6,21 @@ import { FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  // Initialize theme
-  useEffect(() => {
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    // Initialize theme from localStorage or system preference
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      setIsDarkMode(true);
+    return savedTheme === 'dark' || (!savedTheme && prefersDark);
+  });
+
+  // Apply theme class on mount and when isDarkMode changes
+  useEffect(() => {
+    if (isDarkMode) {
       document.documentElement.classList.add('dark');
     } else {
-      setIsDarkMode(false);
       document.documentElement.classList.remove('dark');
     }
-  }, []);
+  }, [isDarkMode]);
 
   const toggleDarkMode = () => {
     const newMode = !isDarkMode;
@@ -61,7 +61,10 @@ const Navbar = () => {
 
   return (
     <>
-      <nav 
+      <motion.nav 
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed w-full z-50 transition-all duration-500 px-4 sm:px-8 py-4 ${
           scrolled ? 'top-2' : 'top-0'
         }`}
@@ -74,30 +77,56 @@ const Navbar = () => {
           }`}
         >
           <div className="flex justify-between h-20 items-center px-6 sm:px-10">
-            <div className="flex-shrink-0 flex items-center">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.8, duration: 0.5 }}
+              className="flex-shrink-0 flex items-center"
+            >
               <img 
-                className={`h-9 w-auto hover:scale-105 transition-transform duration-300 ${isDarkMode ? 'brightness-0 invert' : ''}`} 
+                className="h-12 w-auto hover:scale-105 transition-transform duration-300" 
                 src="/avoma-pharma-logo.png" 
                 alt="Avoma Pharma Logo" 
               />
-            </div>
+            </motion.div>
             
             {/* Desktop Menu */}
             <div className="hidden lg:flex items-center space-x-12">
-              <div className="flex items-center space-x-10">
+              <motion.div 
+                initial="hidden"
+                animate="visible"
+                variants={{
+                  visible: {
+                    transition: {
+                      staggerChildren: 0.1,
+                      delayChildren: 1.0
+                    }
+                  }
+                }}
+                className="flex items-center space-x-10"
+              >
                 {navLinks.map((link) => (
-                  <a
+                  <motion.a
                     key={link.name}
                     href={link.href}
+                    variants={{
+                      hidden: { opacity: 0, y: -10 },
+                      visible: { opacity: 1, y: 0 }
+                    }}
                     className="relative text-gray-800 dark:text-gray-200 hover:text-orange-600 dark:hover:text-orange-500 text-[13px] font-black uppercase tracking-[0.15em] transition-colors group"
                   >
                     {link.name}
                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-600 transition-all duration-300 group-hover:w-full"></span>
-                  </a>
+                  </motion.a>
                 ))}
-              </div>
+              </motion.div>
               
-              <div className="flex items-center space-x-6">
+              <motion.div 
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1.6, duration: 0.5 }}
+                className="flex items-center space-x-6"
+              >
                 <button
                   onClick={toggleDarkMode}
                   className="p-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-orange-50 dark:hover:bg-orange-900/20 hover:text-orange-600 dark:hover:text-orange-500 transition-all duration-300 border border-transparent hover:border-orange-200 dark:hover:border-orange-500/30"
@@ -113,11 +142,16 @@ const Navbar = () => {
                 >
                   Sign Up
                 </motion.button>
-              </div>
+              </motion.div>
             </div>
 
             {/* Mobile menu trigger */}
-            <div className="lg:hidden flex items-center space-x-2">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.8 }}
+              className="lg:hidden flex items-center space-x-2"
+            >
               <button
                 onClick={toggleDarkMode}
                 className="p-2.5 rounded-xl text-gray-800 dark:text-gray-200"
@@ -130,10 +164,10 @@ const Navbar = () => {
               >
                 <Menu size={24} />
               </button>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </nav>
+      </motion.nav>
 
       {/* Mobile Drawer Overlay */}
       <AnimatePresence>
@@ -155,7 +189,7 @@ const Navbar = () => {
             >
               <div className="p-8 flex items-center justify-between border-b border-gray-100 dark:border-gray-900">
                 <img 
-                  className={`h-8 w-auto ${isDarkMode ? 'brightness-0 invert' : ''}`} 
+                  className="h-8 w-auto" 
                   src="/avoma-pharma-logo.png" 
                   alt="Logo" 
                 />

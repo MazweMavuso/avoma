@@ -9,6 +9,7 @@ import Newsletter from './components/Newsletter';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import ScrollProgress from './components/ScrollProgress';
+import Chatbot from './components/Chatbot';
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
       </main>
       <Footer />
       <ScrollToTop />
+      <Chatbot />
     </div>
   );
 }
