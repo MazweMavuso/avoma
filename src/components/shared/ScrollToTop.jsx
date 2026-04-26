@@ -66,14 +66,14 @@ const ScrollToTop = () => {
                 fill="transparent"
                 strokeDasharray={circumference}
                 animate={{ strokeDashoffset: offset }}
-                className="text-orange-600"
+                className="text-red-600"
               />
             </svg>
 
             {/* Icon Button */}
-            <div className="absolute inset-0 m-2 flex items-center justify-center bg-white dark:bg-gray-800 rounded-full shadow-lg group-hover:bg-orange-600 transition-all duration-300">
+            <div className="absolute inset-0 m-2 flex items-center justify-center bg-white dark:bg-gray-800 rounded-full shadow-lg group-hover:bg-red-600 transition-all duration-300">
               <ChevronUp 
-                className="text-orange-600 group-hover:text-white transition-colors duration-300" 
+                className="text-red-600 group-hover:text-white transition-colors duration-300" 
                 size={24} 
               />
             </div>

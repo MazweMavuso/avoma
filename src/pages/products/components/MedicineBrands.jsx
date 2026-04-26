@@ -22,7 +22,7 @@ const MedicineBrands = () => {
   return (
     <div className="mb-32">
       <div className="flex items-center space-x-4 mb-12">
-        <div className="p-3 bg-orange-100 dark:bg-orange-950/30 rounded-2xl text-orange-600">
+        <div className="p-3 bg-red-100 dark:bg-red-950/30 rounded-2xl text-red-600">
           <FaPills size={28} />
         </div>
         <h2 className="text-3xl font-black text-gray-900 dark:text-white tracking-tight">Pharmaceutical Brands</h2>
@@ -43,15 +43,15 @@ const MedicineBrands = () => {
             rel="noopener noreferrer"
             variants={fadeInUp}
             whileHover={{ y: -5 }}
-            className="group p-8 bg-gray-50 dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 hover:border-orange-500/50 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-orange-500/5"
+            className="group p-8 bg-gray-50 dark:bg-gray-900 rounded-3xl border border-gray-100 dark:border-gray-800 hover:border-red-500/50 transition-all duration-300 shadow-sm hover:shadow-xl hover:shadow-red-500/5"
           >
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-orange-600 transition-colors">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-red-600 transition-colors">
               {brand.name}
             </h3>
             <p className="text-sm text-gray-500 dark:text-gray-400 mb-6 font-medium">
               {brand.specialty}
             </p>
-            <div className="flex items-center text-orange-600 text-sm font-bold uppercase tracking-widest">
+            <div className="flex items-center text-red-600 text-sm font-bold uppercase tracking-widest">
               View Website <ChevronRight size={16} className="ml-1 group-hover:translate-x-1 transition-transform" />
             </div>
           </motion.a>

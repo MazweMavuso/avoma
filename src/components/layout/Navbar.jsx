@@ -96,12 +96,12 @@ const Navbar = () => {
                     to={link.href}
                     className={`relative text-[13px] font-black uppercase tracking-[0.15em] transition-colors group whitespace-nowrap ${
                       location.pathname === link.href 
-                        ? 'text-orange-600 dark:text-orange-500' 
-                        : 'text-gray-800 dark:text-gray-200 hover:text-orange-600 dark:hover:text-orange-500'
+                        ? 'text-red-600 dark:text-red-500' 
+                        : 'text-gray-800 dark:text-gray-200 hover:text-red-600 dark:hover:text-red-500'
                     }`}
                   >
                     {link.name}
-                    <span className={`absolute -bottom-1 left-0 h-0.5 bg-orange-600 transition-all duration-300 group-hover:w-full ${location.pathname === link.href ? 'w-full' : 'w-0'}`}></span>
+                    <span className={`absolute -bottom-1 left-0 h-0.5 bg-red-600 transition-all duration-300 group-hover:w-full ${location.pathname === link.href ? 'w-full' : 'w-0'}`}></span>
                   </Link>
                 ))}
               </div>
@@ -112,7 +112,7 @@ const Navbar = () => {
               <div className="hidden lg:flex items-center space-x-6">
                 <button
                   onClick={toggleDarkMode}
-                  className="p-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-orange-50 dark:hover:bg-orange-900/20 hover:text-orange-600 dark:hover:text-orange-500 transition-all duration-300 border border-transparent"
+                  className="p-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 dark:hover:text-red-500 transition-all duration-300 border border-transparent"
                   aria-label="Toggle Dark Mode"
                 >
                   {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
@@ -120,9 +120,9 @@ const Navbar = () => {
 
                 <Link to="/signup">
                   <motion.button 
-                    whileHover={{ scale: 1.05, backgroundColor: '#ea580c' }}
+                    whileHover={{ scale: 1.05, backgroundColor: '#c0392b' }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-orange-600 text-white font-black text-[13px] uppercase tracking-widest px-8 py-3.5 rounded-2xl hover:shadow-[0_10px_20px_rgba(234,88,12,0.2)] transition-all"
+                    className="bg-red-600 text-white font-black text-[13px] uppercase tracking-widest px-8 py-3.5 rounded-2xl hover:shadow-[0_10px_20px_rgba(192,57,43,0.2)] transition-all"
                   >
                     Sign Up
                   </motion.button>
@@ -189,14 +189,14 @@ const Navbar = () => {
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.1 + idx * 0.05 }}
-                        className="group flex items-center justify-between p-4 rounded-2xl hover:bg-orange-50 dark:hover:bg-orange-950/20 transition-all cursor-pointer"
+                        className="group flex items-center justify-between p-4 rounded-2xl hover:bg-red-50 dark:hover:bg-red-950/20 transition-all cursor-pointer"
                       >
-                        <span className={`text-lg font-black uppercase tracking-widest group-hover:text-orange-600 dark:group-hover:text-orange-500 transition-colors ${
-                          location.pathname === link.href ? 'text-orange-600 dark:text-orange-500' : 'text-gray-800 dark:text-gray-200'
+                        <span className={`text-lg font-black uppercase tracking-widest group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors ${
+                          location.pathname === link.href ? 'text-red-600 dark:text-red-500' : 'text-gray-800 dark:text-gray-200'
                         }`}>
                           {link.name}
                         </span>
-                        <ArrowRight size={18} className="text-gray-300 dark:text-gray-700 group-hover:text-orange-600 group-hover:translate-x-1 transition-all" />
+                        <ArrowRight size={18} className="text-gray-300 dark:text-gray-700 group-hover:text-red-600 group-hover:translate-x-1 transition-all" />
                       </motion.div>
                     </Link>
                   ))}
@@ -205,7 +205,7 @@ const Navbar = () => {
 
               <div className="p-8 bg-gray-50 dark:bg-gray-900/50">
                 <Link to="/signup" onClick={() => setIsOpen(false)}>
-                  <button className="w-full bg-orange-600 text-white font-black py-5 rounded-2xl shadow-xl shadow-orange-900/10 text-base uppercase tracking-widest mb-8">
+                  <button className="w-full bg-red-600 text-white font-black py-5 rounded-2xl shadow-xl shadow-red-900/10 text-base uppercase tracking-widest mb-8">
                     Sign Up Now
                   </button>
                 </Link>

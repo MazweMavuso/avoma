@@ -11,9 +11,9 @@ const ContactPage = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <span className="text-orange-600 font-bold uppercase tracking-widest text-sm">Communication</span>
+          <span className="text-red-600 font-bold uppercase tracking-widest text-sm">Communication</span>
           <h1 className="mt-4 text-5xl lg:text-7xl font-black text-gray-900 dark:text-white tracking-tight">
-            Connect <span className="text-orange-600">With Us</span>
+            Connect <span className="text-red-600">With Us</span>
           </h1>
           <p className="mt-6 text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto font-medium leading-relaxed">
             Whether you have a specific inquiry or are looking for a long-term partnership, our team is ready to provide you with the necessary support.

@@ -17,28 +17,28 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-bold mb-6 uppercase tracking-widest">Quick Links</h4>
             <ul className="space-y-4 text-gray-400">
-              <li><Link to="/" className="hover:text-orange-500 transition-colors font-medium">Home</Link></li>
-              <li><Link to="/products" className="hover:text-orange-500 transition-colors font-medium">Products</Link></li>
-              <li><Link to="/about" className="hover:text-orange-500 transition-colors font-medium">About Us</Link></li>
-              <li><Link to="/contact" className="hover:text-orange-500 transition-colors font-medium">Contact</Link></li>
+              <li><Link to="/" className="hover:text-red-500 transition-colors font-medium">Home</Link></li>
+              <li><Link to="/products" className="hover:text-red-500 transition-colors font-medium">Products</Link></li>
+              <li><Link to="/about" className="hover:text-red-500 transition-colors font-medium">About Us</Link></li>
+              <li><Link to="/contact" className="hover:text-red-500 transition-colors font-medium">Contact</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="text-lg font-bold mb-6 uppercase tracking-widest">Contact Info</h4>
             <ul className="space-y-4 text-gray-400">
               <li className="flex items-start">
-                <Phone size={18} className="mr-3 text-orange-500 mt-1 flex-shrink-0" /> 
+                <Phone size={18} className="mr-3 text-red-500 mt-1 flex-shrink-0" /> 
                 <div className="flex flex-col">
                   <span>{businessInfo.contact.phones[0]}</span>
                   <span className="text-sm opacity-70">{businessInfo.contact.phones[1]} / {businessInfo.contact.phones[2]}</span>
                 </div>
               </li>
               <li className="flex items-center">
-                <Mail size={18} className="mr-3 text-orange-500" /> 
+                <Mail size={18} className="mr-3 text-red-500" /> 
                 {businessInfo.contact.emails[0]}
               </li>
               <li className="flex items-start">
-                <MapPin size={18} className="mr-3 text-orange-500 mt-1 flex-shrink-0" /> 
+                <MapPin size={18} className="mr-3 text-red-500 mt-1 flex-shrink-0" /> 
                 {businessInfo.contact.address.full}
               </li>
             </ul>
@@ -46,9 +46,9 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-bold mb-6 uppercase tracking-widest">Follow Us</h4>
             <div className="flex space-x-4">
-              <a href={businessInfo.social.facebook} target="_blank" rel="noopener noreferrer" className="bg-gray-800 p-3 rounded-xl hover:bg-orange-600 transition-all hover:-translate-y-1"><FaFacebook size={20} /></a>
-              <a href={businessInfo.social.instagram} target="_blank" rel="noopener noreferrer" className="bg-gray-800 p-3 rounded-xl hover:bg-orange-400 transition-all hover:-translate-y-1"><FaInstagram size={20} /></a>
-              <a href={businessInfo.social.linkedin} target="_blank" rel="noopener noreferrer" className="bg-gray-800 p-3 rounded-xl hover:bg-orange-700 transition-all hover:-translate-y-1"><FaLinkedin size={20} /></a>
+              <a href={businessInfo.social.facebook} target="_blank" rel="noopener noreferrer" className="bg-gray-800 p-3 rounded-xl hover:bg-red-600 transition-all hover:-translate-y-1"><FaFacebook size={20} /></a>
+              <a href={businessInfo.social.instagram} target="_blank" rel="noopener noreferrer" className="bg-gray-800 p-3 rounded-xl hover:bg-red-400 transition-all hover:-translate-y-1"><FaInstagram size={20} /></a>
+              <a href={businessInfo.social.linkedin} target="_blank" rel="noopener noreferrer" className="bg-gray-800 p-3 rounded-xl hover:bg-red-700 transition-all hover:-translate-y-1"><FaLinkedin size={20} /></a>
             </div>
           </div>
         </div>

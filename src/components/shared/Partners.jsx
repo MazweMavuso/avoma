@@ -46,7 +46,7 @@ const Partners = () => {
         <Reveal>
           <div className="text-center">
             <h2 className="text-3xl font-black text-gray-900 dark:text-white uppercase tracking-widest">Our Trusted Partners</h2>
-            <div className="mt-4 w-24 h-1.5 bg-orange-600 mx-auto rounded-full"></div>
+            <div className="mt-4 w-24 h-1.5 bg-red-600 mx-auto rounded-full"></div>
             <p className="mt-6 text-gray-600 dark:text-gray-400 font-medium">Collaborating with world-class healthcare brands</p>
           </div>
         </Reveal>

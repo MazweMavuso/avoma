@@ -32,12 +32,12 @@ const FAQItem = ({ question, answer, isOpen, onClick }) => {
         onClick={onClick}
         className="w-full py-6 flex items-center justify-between text-left group transition-all"
       >
-        <span className={`text-lg font-bold transition-colors ${isOpen ? 'text-orange-600' : 'text-gray-900 dark:text-white'}`}>
+        <span className={`text-lg font-bold transition-colors ${isOpen ? 'text-red-600' : 'text-gray-900 dark:text-white'}`}>
           {question}
         </span>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
-          className={`p-2 rounded-xl transition-colors ${isOpen ? 'bg-orange-600 text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-400 group-hover:text-orange-600'}`}
+          className={`p-2 rounded-xl transition-colors ${isOpen ? 'bg-red-600 text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-400 group-hover:text-red-600'}`}
         >
           <ChevronDown size={20} />
         </motion.div>
@@ -68,9 +68,9 @@ const FAQ = () => {
     <section className="py-24">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-2 px-4 py-2 bg-orange-50 dark:bg-orange-950/20 rounded-full mb-6">
-            <HelpCircle size={18} className="text-orange-600" />
-            <span className="text-sm font-bold uppercase tracking-widest text-orange-700 dark:text-orange-400">Questions?</span>
+          <div className="inline-flex items-center space-x-2 px-4 py-2 bg-red-50 dark:bg-red-950/20 rounded-full mb-6">
+            <HelpCircle size={18} className="text-red-600" />
+            <span className="text-sm font-bold uppercase tracking-widest text-red-700 dark:text-red-400">Questions?</span>
           </div>
           <h2 className="text-4xl font-black text-gray-900 dark:text-white tracking-tight">Frequently Asked Questions</h2>
           <p className="mt-6 text-lg text-gray-600 dark:text-gray-400 font-medium">

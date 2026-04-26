@@ -14,16 +14,16 @@ const About = () => {
                 alt="Medical Professional" 
                 className="rounded-3xl shadow-2xl w-full object-cover h-[500px] border-8 border-gray-50 dark:border-gray-900"
               />
-              <div className="absolute -bottom-6 -right-6 bg-orange-600 p-8 rounded-3xl shadow-xl hidden sm:block">
+              <div className="absolute -bottom-6 -right-6 bg-red-600 p-8 rounded-3xl shadow-xl hidden sm:block">
                 <p className="text-white font-black text-2xl">Established</p>
-                <p className="text-orange-100 font-bold uppercase tracking-widest text-sm">Since {businessInfo.established.pharma}</p>
+                <p className="text-red-100 font-bold uppercase tracking-widest text-sm">Since {businessInfo.established.pharma}</p>
               </div>
             </div>
           </div>
           <div className="lg:w-1/2 mt-16 lg:mt-0">
             <h2 className="text-4xl font-black text-gray-900 dark:text-white sm:text-5xl mb-8 leading-tight">
               Commitment to <br />
-              <span className="text-orange-600">Quality & Innovation</span>
+              <span className="text-red-600">Quality & Innovation</span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 leading-relaxed font-medium">
               At Avoma Pharma, we believe that health is the foundation of a fulfilling life. Our team of experts works tirelessly to ensure that every product meeting our name adheres to the highest global standards.

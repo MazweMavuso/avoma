@@ -8,17 +8,17 @@ const FocusAreas = () => {
     {
       title: 'Quality Assurance',
       desc: 'Rigorous testing and international standards compliance for every product.',
-      icon: <ShieldCheck className="text-orange-600" size={32} />,
+      icon: <ShieldCheck className="text-red-600" size={32} />,
     },
     {
       title: 'Innovation',
       desc: 'Investing in R&D to bring the latest medical advancements to market.',
-      icon: <Zap className="text-orange-600" size={32} />,
+      icon: <Zap className="text-red-600" size={32} />,
     },
     {
       title: 'Global Distribution',
       desc: 'A robust supply chain ensuring timely delivery across borders.',
-      icon: <Globe className="text-orange-600" size={32} />,
+      icon: <Globe className="text-red-600" size={32} />,
     },
   ];
 
@@ -30,7 +30,7 @@ const FocusAreas = () => {
             <h2 className="text-4xl font-black text-gray-900 dark:text-white sm:text-5xl">
               Our Core Focus Areas
             </h2>
-            <div className="mt-4 w-24 h-1.5 bg-orange-600 mx-auto rounded-full"></div>
+            <div className="mt-4 w-24 h-1.5 bg-red-600 mx-auto rounded-full"></div>
             <p className="mt-6 text-xl text-gray-600 dark:text-gray-400 font-medium">
               Driven by excellence, committed to your health.
             </p>
@@ -42,12 +42,12 @@ const FocusAreas = () => {
             <StaggerItem key={area.title}>
               <motion.div
                 whileHover={{ y: -15 }}
-                className="bg-white dark:bg-gray-800 p-10 rounded-3xl shadow-xl shadow-gray-100 dark:shadow-none border border-gray-100 dark:border-gray-700 transition-all hover:border-orange-200 dark:hover:border-orange-500/30 h-full"
+                className="bg-white dark:bg-gray-800 p-10 rounded-3xl shadow-xl shadow-gray-100 dark:shadow-none border border-gray-100 dark:border-gray-700 transition-all hover:border-red-200 dark:hover:border-red-500/30 h-full"
               >
-                <div className="mb-6 inline-block p-4 bg-orange-50 dark:bg-orange-900/20 rounded-2xl">{area.icon}</div>
+                <div className="mb-6 inline-block p-4 bg-red-50 dark:bg-red-900/20 rounded-2xl">{area.icon}</div>
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{area.title}</h3>
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed font-medium">{area.desc}</p>
-                <div className="mt-6 flex items-center text-orange-600 dark:text-orange-500 font-bold cursor-pointer group">
+                <div className="mt-6 flex items-center text-red-600 dark:text-red-500 font-bold cursor-pointer group">
                   Read More 
                   <div className="ml-2 transform group-hover:translate-x-1 transition-transform">→</div>
                 </div>

@@ -47,7 +47,7 @@ const Loader = ({ finishLoading }) => {
           <span className="text-4xl font-black text-gray-900 dark:text-white tabular-nums">
             {Math.round(progress)}%
           </span>
-          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-orange-600 mt-2">
+          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-red-600 mt-2">
             Initializing Quality Care
           </p>
         </div>
@@ -57,13 +57,13 @@ const Loader = ({ finishLoading }) => {
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: `${progress}%` }}
-            className="h-full bg-orange-600"
+            className="h-full bg-red-600"
           />
         </div>
       </div>
 
       {/* Background Accents */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-orange-600/5 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute top-0 left-0 w-64 h-64 bg-red-600/5 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2"></div>
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-blue-600/5 rounded-full blur-[100px] translate-x-1/2 translate-y-1/2"></div>
     </motion.div>
   );

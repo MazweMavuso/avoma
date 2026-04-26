@@ -33,18 +33,18 @@ const SignupPage = () => {
           animate={{ opacity: 1, scale: 1 }}
           className="max-w-md w-full bg-white dark:bg-gray-900 rounded-[40px] p-12 text-center border border-gray-100 dark:border-gray-800 shadow-xl"
         >
-          <div className="w-20 h-20 bg-orange-50 dark:bg-orange-950/20 rounded-3xl flex items-center justify-center mx-auto mb-8 text-orange-600">
+          <div className="w-20 h-20 bg-red-50 dark:bg-red-950/20 rounded-3xl flex items-center justify-center mx-auto mb-8 text-red-600">
             <CheckCircle2 size={40} />
           </div>
           <h2 className="text-3xl font-black text-gray-900 dark:text-white uppercase tracking-widest mb-4">Registration Successful!</h2>
           <p className="text-gray-600 dark:text-gray-400 font-medium mb-8">
-            Thank you for joining AVOMA Pharma. We've sent a verification email to <span className="text-orange-600">{formData.email}</span>.
+            Thank you for joining AVOMA Pharma. We've sent a verification email to <span className="text-red-600">{formData.email}</span>.
           </p>
           <Link to="/">
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full bg-orange-600 text-white font-black py-5 rounded-2xl shadow-lg shadow-orange-600/20 uppercase tracking-widest"
+              className="w-full bg-red-600 text-white font-black py-5 rounded-2xl shadow-lg shadow-red-600/20 uppercase tracking-widest"
             >
               Return Home
             </motion.button>
@@ -66,7 +66,7 @@ const SignupPage = () => {
           className="flex-1 text-center lg:text-left"
         >
           <h1 className="text-4xl sm:text-6xl font-black text-gray-900 dark:text-white uppercase tracking-tighter leading-none mb-6">
-            Join the <span className="text-orange-600">Pharma</span> Network
+            Join the <span className="text-red-600">Pharma</span> Network
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-400 font-medium max-w-xl mx-auto lg:mx-0 mb-8">
             Create an account to access our wholesale catalog, track orders, and manage your pharmaceutical distribution across Southern Africa.
@@ -80,7 +80,7 @@ const SignupPage = () => {
               { title: 'Partner Network', desc: 'Connect with global brands' }
             ].map((item, idx) => (
               <div key={idx} className="p-4 bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800">
-                <h4 className="text-xs font-black text-orange-600 uppercase tracking-widest mb-1">{item.title}</h4>
+                <h4 className="text-xs font-black text-red-600 uppercase tracking-widest mb-1">{item.title}</h4>
                 <p className="text-xs text-gray-500 dark:text-gray-500 font-medium">{item.desc}</p>
               </div>
             ))}
@@ -95,8 +95,8 @@ const SignupPage = () => {
           className="w-full max-w-xl bg-white dark:bg-gray-900 rounded-[40px] p-8 sm:p-12 border border-gray-100 dark:border-gray-800 shadow-2xl relative overflow-hidden"
         >
           {/* Decorative Background Elements */}
-          <div className="absolute top-0 right-0 w-32 h-32 bg-orange-600/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-32 h-32 bg-orange-600/5 rounded-full -ml-16 -mb-16 blur-3xl"></div>
+          <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-32 h-32 bg-red-600/5 rounded-full -ml-16 -mb-16 blur-3xl"></div>
 
           <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -110,7 +110,7 @@ const SignupPage = () => {
                   required
                   value={formData.fullName}
                   onChange={handleChange}
-                  className="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-4 focus:ring-orange-600/10 focus:border-orange-600 outline-none transition-all font-medium"
+                  className="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-4 focus:ring-red-600/10 focus:border-red-600 outline-none transition-all font-medium"
                   placeholder="Enter your name"
                 />
               </div>
@@ -124,7 +124,7 @@ const SignupPage = () => {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-4 focus:ring-orange-600/10 focus:border-orange-600 outline-none transition-all font-medium"
+                  className="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-4 focus:ring-red-600/10 focus:border-red-600 outline-none transition-all font-medium"
                   placeholder="email@company.com"
                 />
               </div>
@@ -139,7 +139,7 @@ const SignupPage = () => {
                 name="company"
                 value={formData.company}
                 onChange={handleChange}
-                className="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-4 focus:ring-orange-600/10 focus:border-orange-600 outline-none transition-all font-medium"
+                className="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-4 focus:ring-red-600/10 focus:border-red-600 outline-none transition-all font-medium"
                 placeholder="e.g. HealthCare Solutions Ltd"
               />
             </div>
@@ -155,7 +155,7 @@ const SignupPage = () => {
                   required
                   value={formData.password}
                   onChange={handleChange}
-                  className="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-4 focus:ring-orange-600/10 focus:border-orange-600 outline-none transition-all font-medium"
+                  className="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-4 focus:ring-red-600/10 focus:border-red-600 outline-none transition-all font-medium"
                   placeholder="••••••••"
                 />
               </div>
@@ -169,7 +169,7 @@ const SignupPage = () => {
                   required
                   value={formData.confirmPassword}
                   onChange={handleChange}
-                  className="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-4 focus:ring-orange-600/10 focus:border-orange-600 outline-none transition-all font-medium"
+                  className="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-4 focus:ring-red-600/10 focus:border-red-600 outline-none transition-all font-medium"
                   placeholder="••••••••"
                 />
               </div>
@@ -180,7 +180,7 @@ const SignupPage = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full bg-orange-600 text-white font-black py-5 rounded-2xl hover:bg-orange-700 transition-all flex items-center justify-center space-x-3 shadow-lg shadow-orange-600/20 text-base uppercase tracking-widest"
+                className="w-full bg-red-600 text-white font-black py-5 rounded-2xl hover:bg-red-700 transition-all flex items-center justify-center space-x-3 shadow-lg shadow-red-600/20 text-base uppercase tracking-widest"
               >
                 <span>Create Account</span>
                 <ArrowRight size={18} />
@@ -188,7 +188,7 @@ const SignupPage = () => {
               
               <p className="mt-8 text-center text-sm text-gray-500 dark:text-gray-500 font-medium">
                 Already have an account?{' '}
-                <Link to="/login" className="text-orange-600 hover:underline font-black uppercase tracking-widest text-[11px]">
+                <Link to="/login" className="text-red-600 hover:underline font-black uppercase tracking-widest text-[11px]">
                   Sign In
                 </Link>
               </p>

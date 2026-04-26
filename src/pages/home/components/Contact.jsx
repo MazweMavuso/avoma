@@ -25,25 +25,25 @@ const Contact = () => {
 
   const contactDetails = [
     {
-      icon: <Phone className="text-orange-600" size={24} />,
+      icon: <Phone className="text-red-600" size={24} />,
       title: 'Regional Contacts',
       info: `SZ: ${businessInfo.regionalContacts.eswatini[0]}`,
       subInfo: `MZ: ${businessInfo.regionalContacts.mozambique[0]}`
     },
     {
-      icon: <Mail className="text-orange-600" size={24} />,
+      icon: <Mail className="text-red-600" size={24} />,
       title: 'Email Support',
       info: businessInfo.contact.emails[0],
       subInfo: businessInfo.contact.emails[1]
     },
     {
-      icon: <MapPin className="text-orange-600" size={24} />,
+      icon: <MapPin className="text-red-600" size={24} />,
       title: 'Main Office',
       info: `${businessInfo.contact.address.street}, ${businessInfo.contact.address.city}`,
       subInfo: businessInfo.contact.address.full
     },
     {
-      icon: <Clock className="text-orange-600" size={24} />,
+      icon: <Clock className="text-red-600" size={24} />,
       title: 'Business Hours',
       info: businessInfo.contact.workingHours,
       subInfo: `Weekend: ${businessInfo.contact.weekend}`
@@ -61,7 +61,7 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl sm:text-4xl font-black text-gray-900 dark:text-white uppercase tracking-widest">Get In Touch</h2>
-            <div className="mt-4 w-24 h-1.5 bg-orange-600 mx-auto rounded-full"></div>
+            <div className="mt-4 w-24 h-1.5 bg-red-600 mx-auto rounded-full"></div>
             <p className="mt-6 text-lg text-gray-600 dark:text-gray-400 font-medium max-w-2xl mx-auto">
               Have questions or need assistance? Our team is dedicated to providing you with the best support.
             </p>
@@ -87,7 +87,7 @@ const Contact = () => {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-4 focus:ring-orange-600/10 focus:border-orange-600 outline-none transition-all font-medium"
+                    className="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-4 focus:ring-red-600/10 focus:border-red-600 outline-none transition-all font-medium"
                     placeholder="John Doe"
                   />
                 </div>
@@ -99,7 +99,7 @@ const Contact = () => {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-4 focus:ring-orange-600/10 focus:border-orange-600 outline-none transition-all font-medium"
+                    className="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-4 focus:ring-red-600/10 focus:border-red-600 outline-none transition-all font-medium"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -112,7 +112,7 @@ const Contact = () => {
                   required
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-4 focus:ring-orange-600/10 focus:border-orange-600 outline-none transition-all font-medium"
+                  className="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-4 focus:ring-red-600/10 focus:border-red-600 outline-none transition-all font-medium"
                   placeholder="Inquiry about services"
                 />
               </div>
@@ -124,7 +124,7 @@ const Contact = () => {
                   rows="5"
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-4 focus:ring-orange-600/10 focus:border-orange-600 outline-none transition-all font-medium resize-none"
+                  className="w-full px-6 py-4 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-4 focus:ring-red-600/10 focus:border-red-600 outline-none transition-all font-medium resize-none"
                   placeholder="How can we help you?"
                 ></textarea>
               </div>
@@ -132,7 +132,7 @@ const Contact = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full bg-orange-600 text-white font-black py-5 rounded-2xl hover:bg-orange-700 transition-all flex items-center justify-center space-x-3 shadow-lg shadow-orange-600/20 text-base uppercase tracking-widest"
+                className="w-full bg-red-600 text-white font-black py-5 rounded-2xl hover:bg-red-700 transition-all flex items-center justify-center space-x-3 shadow-lg shadow-red-600/20 text-base uppercase tracking-widest"
               >
                 <span>Send Message</span>
                 <Send size={18} />
@@ -150,8 +150,8 @@ const Contact = () => {
               className="grid grid-cols-1 sm:grid-cols-2 gap-6"
             >
               {contactDetails.map((item, index) => (
-                <div key={index} className="flex flex-col p-6 bg-white dark:bg-gray-900 rounded-[32px] border border-gray-100 dark:border-gray-800 shadow-sm hover:border-orange-200 dark:hover:border-orange-500/30 transition-all group">
-                  <div className="w-12 h-12 flex items-center justify-center bg-orange-50 dark:bg-orange-950/20 rounded-2xl mb-4 group-hover:bg-orange-600 group-hover:text-white transition-colors duration-300">
+                <div key={index} className="flex flex-col p-6 bg-white dark:bg-gray-900 rounded-[32px] border border-gray-100 dark:border-gray-800 shadow-sm hover:border-red-200 dark:hover:border-red-500/30 transition-all group">
+                  <div className="w-12 h-12 flex items-center justify-center bg-red-50 dark:bg-red-950/20 rounded-2xl mb-4 group-hover:bg-red-600 group-hover:text-white transition-colors duration-300">
                     {React.cloneElement(item.icon, { size: 20, className: "transition-colors duration-300" })}
                   </div>
                   <div>

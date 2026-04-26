@@ -114,7 +114,7 @@ const Hero = () => {
             >
               <motion.h1 variants={itemVariants} className="text-3xl sm:text-4xl lg:text-6xl tracking-tight font-black text-gray-900 dark:text-white leading-none sm:leading-[1.1] uppercase">
                 {slides[currentSlide].title.split(' ').slice(0, -1).join(' ')} <br />
-                <span className="text-orange-600">
+                <span className="text-red-600">
                   {slides[currentSlide].title.split(' ').pop()}
                 </span>
               </motion.h1>
@@ -126,9 +126,9 @@ const Hero = () => {
               <motion.div variants={itemVariants} className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-4">
                 <Link to={slides[currentSlide].primaryLink} className="w-full sm:w-auto">
                   <motion.button 
-                    whileHover={{ scale: 1.05, backgroundColor: '#ea580c' }}
+                    whileHover={{ scale: 1.05, backgroundColor: '#c0392b' }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-full flex items-center justify-center px-8 py-3.5 bg-orange-600 text-white font-black rounded-2xl shadow-xl shadow-orange-200 dark:shadow-none transition-all text-sm uppercase tracking-widest group"
+                    className="w-full flex items-center justify-center px-8 py-3.5 bg-red-600 text-white font-black rounded-2xl shadow-xl shadow-red-200 dark:shadow-none transition-all text-sm uppercase tracking-widest group"
                   >
                     {slides[currentSlide].primaryBtn}
                     <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
@@ -139,16 +139,16 @@ const Hero = () => {
                   <motion.button 
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-full flex items-center justify-center px-8 py-3.5 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-black rounded-2xl border-2 border-gray-100 dark:border-gray-700 hover:border-orange-600 hover:text-orange-600 transition-all text-sm uppercase tracking-widest"
+                    className="w-full flex items-center justify-center px-8 py-3.5 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-black rounded-2xl border-2 border-gray-100 dark:border-gray-700 hover:border-red-600 hover:text-red-600 transition-all text-sm uppercase tracking-widest"
                   >
                     {slides[currentSlide].secondaryBtn}
                   </motion.button>
                 </Link>
               </motion.div>
 
-              <motion.div variants={itemVariants} className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-orange-50 dark:bg-orange-950/20 border border-orange-100 dark:border-orange-900/30 mt-6 sm:mt-8">
-                <span className="flex h-1.5 w-1.5 rounded-full bg-orange-600 animate-pulse"></span>
-                <span className="text-orange-700 dark:text-orange-400 text-[10px] font-black tracking-widest uppercase">{slides[currentSlide].subtitle}</span>
+              <motion.div variants={itemVariants} className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-red-50 dark:bg-red-950/20 border border-red-100 dark:border-red-900/30 mt-6 sm:mt-8">
+                <span className="flex h-1.5 w-1.5 rounded-full bg-red-600 animate-pulse"></span>
+                <span className="text-red-700 dark:text-red-400 text-[10px] font-black tracking-widest uppercase">{slides[currentSlide].subtitle}</span>
               </motion.div>
             </motion.div>
           </AnimatePresence>
@@ -180,7 +180,7 @@ const Hero = () => {
             key={index}
             onClick={() => setCurrentSlide(index)}
             className={`h-2.5 rounded-full transition-all duration-500 ${
-              currentSlide === index ? 'w-10 bg-orange-600' : 'w-2.5 bg-gray-300 dark:bg-gray-700 hover:bg-orange-300'
+              currentSlide === index ? 'w-10 bg-red-600' : 'w-2.5 bg-gray-300 dark:bg-gray-700 hover:bg-red-300'
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />
@@ -188,7 +188,7 @@ const Hero = () => {
       </div>
 
       {/* Accent element */}
-      <div className="absolute bottom-0 right-0 w-1/4 h-1/4 bg-orange-600/5 rounded-tl-[120px] -z-0 hidden lg:block"></div>
+      <div className="absolute bottom-0 right-0 w-1/4 h-1/4 bg-red-600/5 rounded-tl-[120px] -z-0 hidden lg:block"></div>
     </section>
   );
 };

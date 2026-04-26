@@ -34,7 +34,7 @@ const CompanyHistory = () => {
     <section className="mb-20">
       <div className="text-center mb-16">
         <h2 className="text-4xl font-black text-gray-900 dark:text-white tracking-tight">Our Journey</h2>
-        <div className="mt-4 w-24 h-1.5 bg-orange-600 mx-auto rounded-full"></div>
+        <div className="mt-4 w-24 h-1.5 bg-red-600 mx-auto rounded-full"></div>
       </div>
 
       <div className="relative">
@@ -53,15 +53,15 @@ const CompanyHistory = () => {
             >
               {/* Content Card */}
               <div className="w-full md:w-1/2 p-4 md:p-8">
-                <div className="bg-white dark:bg-gray-900 p-8 rounded-[32px] border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-xl hover:border-orange-500/20 transition-all group">
-                  <span className="text-orange-600 font-black text-xl mb-2 block">{item.year}</span>
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-orange-600 transition-colors">{item.title}</h3>
+                <div className="bg-white dark:bg-gray-900 p-8 rounded-[32px] border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-xl hover:border-red-500/20 transition-all group">
+                  <span className="text-red-600 font-black text-xl mb-2 block">{item.year}</span>
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-red-600 transition-colors">{item.title}</h3>
                   <p className="text-gray-600 dark:text-gray-400 font-medium leading-relaxed">{item.desc}</p>
                 </div>
               </div>
 
               {/* Central Icon */}
-              <div className="absolute left-1/2 -translate-x-1/2 w-12 h-12 bg-orange-600 rounded-2xl hidden md:flex items-center justify-center text-white shadow-lg shadow-orange-600/30 z-10">
+              <div className="absolute left-1/2 -translate-x-1/2 w-12 h-12 bg-red-600 rounded-2xl hidden md:flex items-center justify-center text-white shadow-lg shadow-red-600/30 z-10">
                 {item.icon}
               </div>
 
