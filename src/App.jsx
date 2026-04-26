@@ -7,6 +7,7 @@ import HomePage from './pages/home/HomePage';
 import ProductsPage from './pages/products/ProductsPage';
 import AboutPage from './pages/about/AboutPage';
 import ContactPage from './pages/contact/ContactPage';
+import DashboardPage from './pages/dashboard/DashboardPage';
 import SignupPage from './pages/auth/SignupPage';
 import LoginPage from './pages/auth/LoginPage';
 import ScrollReset from './components/layout/ScrollReset';
@@ -38,6 +39,7 @@ const App = () => {
                 <Route path="/products" element={<ProductsPage />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/contact" element={<ContactPage />} />
+                <Route path="/dashboard" element={<DashboardPage />} />
                 <Route path="/signup" element={<SignupPage />} />
                 <Route path="/login" element={<LoginPage />} />
               </Routes>

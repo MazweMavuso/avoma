@@ -40,13 +40,13 @@ const SignupPage = () => {
           <p className="text-gray-600 dark:text-gray-400 font-medium mb-8">
             Thank you for joining AVOMA Pharma. We've sent a verification email to <span className="text-red-600">{formData.email}</span>.
           </p>
-          <Link to="/">
+          <Link to="/dashboard">
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="w-full bg-red-600 text-white font-black py-5 rounded-2xl shadow-lg shadow-red-600/20 uppercase tracking-widest"
             >
-              Return Home
+              Go to Dashboard
             </motion.button>
           </Link>
         </motion.div>
