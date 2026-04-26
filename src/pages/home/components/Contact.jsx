@@ -174,7 +174,7 @@ const Contact = () => {
               <div className="absolute inset-0 bg-gray-950/5 pointer-events-none group-hover:bg-transparent transition-colors duration-500 z-10"></div>
               <iframe
                 title="Avoma Group Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3587.7946253456!2d31.117849!3d-26.29814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ee8d3f66a87752b%3A0x45f65345f06775!2sAvoma%20Group!5e0!3m2!1sen!2szw!4v1714041600000!5m2!1sen!2szw"
+                src="https://maps.google.com/maps?q=-26.298369065261326,31.119801719549958&z=17&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
