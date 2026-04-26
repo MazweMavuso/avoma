@@ -169,9 +169,8 @@ const Contact = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex-grow rounded-[40px] overflow-hidden border border-gray-100 dark:border-gray-800 min-h-[350px] shadow-sm relative group z-0"
+              className="flex-grow rounded-[40px] overflow-hidden border border-gray-100 dark:border-gray-800 min-h-[350px] shadow-sm relative z-0"
             >
-              <div className="absolute inset-0 bg-gray-950/5 pointer-events-none group-hover:bg-transparent transition-colors duration-500 z-10"></div>
               <iframe
                 title="Avoma Group Location"
                 src="https://maps.google.com/maps?q=-26.298369065261326,31.119801719549958(Avoma%20Pharma)&z=17&output=embed"
@@ -181,7 +180,7 @@ const Contact = () => {
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="grayscale hover:grayscale-0 transition-all duration-700"
+                className="w-full h-full"
               ></iframe>
             </motion.div>
           </div>
