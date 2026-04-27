@@ -1,9 +1,14 @@
 import { motion } from 'framer-motion';
 import Contact from '../home/components/Contact';
+import SEO from '../../components/shared/SEO';
 
 const ContactPage = () => {
   return (
     <div className="pt-32 pb-20 bg-white dark:bg-gray-950 min-h-screen transition-colors duration-500">
+      <SEO 
+        title="Contact" 
+        description="Get in touch with AVOMA Pharma. We serve Eswatini and Mozambique with offices in Sidwashini. Contact us for wholesale pharmaceutical inquiries."
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}

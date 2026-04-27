@@ -10,6 +10,7 @@ import ContactPage from './pages/contact/ContactPage';
 import DashboardPage from './pages/dashboard/DashboardPage';
 import SignupPage from './pages/auth/SignupPage';
 import LoginPage from './pages/auth/LoginPage';
+import NotFoundPage from './pages/error/NotFoundPage';
 import ScrollReset from './components/layout/ScrollReset';
 import Footer from './components/layout/Footer';
 import ScrollToTop from './components/shared/ScrollToTop';
@@ -42,6 +43,7 @@ const App = () => {
                 <Route path="/dashboard" element={<DashboardPage />} />
                 <Route path="/signup" element={<SignupPage />} />
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="*" element={<NotFoundPage />} />
               </Routes>
             </main>
             <Footer />

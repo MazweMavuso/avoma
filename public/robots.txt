@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://avomagroup.com/pharma/sitemap.xml
